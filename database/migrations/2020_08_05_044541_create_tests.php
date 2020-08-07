@@ -36,17 +36,18 @@ class CreateTests extends Migration
             $table->unsignedBigInteger("ID_Test");
             $table->unsignedBigInteger("ID_Reactivo");
             $table->unsignedBigInteger("tipo")->nullable();
-            $table->foreign("ID_Test")->on("Tests_Test")->references("id")->cascadeOnDelete()->cascadeOnUpdate();;
+            $table->foreign("ID_Test")->on("Tests__Test")->references("id")->cascadeOnDelete()->cascadeOnUpdate();;
             $table->foreign("ID_Reactivo")->on("Reactivos__Reactivos")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
         });
 
         Schema::create('Tests__Generados', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("ID_Test");
-            $table->foreign("ID_Test")->on("Tests_Test")->references("id")->cascadeOnDelete()->cascadeOnUpdate();;
+            $table->foreign("ID_Test")->on("Tests__Test")->references("id")->cascadeOnDelete()->cascadeOnUpdate();;
+            $table->json("DatosGenerados");
             $table->timestamps();
         });
-        Schema::create('Tests__Reactivos_Generados', function (Blueprint $table) {
+        Schema::create('Tests__Reactivo_Generado', function (Blueprint $table) {
             $table->unsignedBigInteger("ID_Test_Generado");
             $table->unsignedBigInteger("ID_Reactivo");
             $table->json("Data_1")->nullable();
@@ -60,34 +61,61 @@ class CreateTests extends Migration
             $table->id();
             $table->unsignedBigInteger("ID_Administrador")->nullable();
             $table->multiLineString("Descripcion")->nullable();
-            $table->foreign("ID_Usuario_Creador")->on("users")->references("id")->nullOnDelete()->cascadeOnUpdate();           
+            $table->foreign("ID_Administrador")->on("users")->references("id")->nullOnDelete()->cascadeOnUpdate();           
             $table->timestamps();
         });
         Schema::create('Tests__Usuario', function (Blueprint $table) {
             $table->unsignedBigInteger("ID_Usuario");
-            $table->unsignedBigInteger("ID_Generado");
+            $table->unsignedBigInteger("ID_Test");
             $table->foreign("ID_Usuario")->on("users")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreign("ID_Generado")->on("Tests__Generados")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->primary(['ID_Usuario','Tests__Generados']);
+            $table->foreign("ID_Test")->on("Tests__Test")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->primary(['ID_Usuario','ID_Test']);
             $table->string("Descripcion")->nullable();
-            $table->integer("intentos")->default(0);
+            $table->integer("intentos")->default(1)->comment("Numero de intentos que tendra el usuario");
             $table->timestamps();
         });
         Schema::create('Tests__Integrantes', function (Blueprint $table) {
             $table->unsignedBigInteger("ID_Usuario");
-            $table->unsignedBigInteger("ID_Generado");
             $table->unsignedBigInteger("ID_Grupo");
-            $table->foreign("ID_Usuario")->on("Tests__Usuario")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign("ID_Usuario")->on("users")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign("ID_Grupo")->on("Tests__Grupo")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreign("ID_Generado")->on("Tests__Usuario")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->primary(['ID_Usuario','Tests__Generados','Tests__Grupo']);
-
-            $table->timestamps();
+            $table->primary(['ID_Usuario','ID_Grupo']);
+        });
+        Schema::create('Tests__Aplicado', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger("ID_Integrante");
+            $table->unsignedBigInteger("ID_Grupo")->nullable();
+            $table->unsignedBigInteger("ID_Generado");
+            
+            $table->foreign("ID_Generado")->on("Tests__Generados")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign("ID_Integrante")->on("users")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign("ID_Grupo")->on("Tests__Grupo")->references("id")->nullOnDelete()->cascadeOnUpdate();
+            
+            $table->dateTime("Aplicado");
+            $table->unsignedBigInteger("Tiempo")->comment("Tiempo llevado en segundos");
+            $table->integer("intento")->default(0);
+            $table->string("Comentarios")->nullable();
+            $table->unsignedBigInteger("ID_Test")->nullable();
+            $table->foreign("ID_Test")->on("Tests__Test")->references("id")->nullOnDelete()->cascadeOnUpdate();
         });
         
-        
-        
-                
+        Schema::create('Tests__Respuesta', function (Blueprint $table) {
+              $table->unsignedBigInteger("ID_Test_hecho");
+              $table->unsignedBigInteger("ID_Respuesta");
+              $table->json("Data1")->nullable();  
+              $table->json("Data2")->nullable();
+              $table->foreign("ID_Test_hecho")->on("Tests__Aplicado")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+              $table->foreign("ID_Respuesta")->on("Reactivos__Opciones")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+              $table->primary(['ID_Test_hecho','ID_Respuesta']);
+        });
+        Schema::create('Tests__ListaNegra', function (Blueprint $table) {
+            $table->unsignedBigInteger("ID_Usuario");
+            $table->unsignedBigInteger("ID_Test");
+            $table->foreign("ID_Usuario")->on("users")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign("ID_Test")->on("Tests__Test")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->primary(['ID_Usuario','ID_Test']);
+            $table->json("Datos");        
+        });     
     }
 
     /**
@@ -97,6 +125,15 @@ class CreateTests extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tests');
+        Schema::dropIfExists('Tests__ListaNegra');
+        Schema::dropIfExists('Tests__Respuesta');
+        Schema::dropIfExists('Tests__Aplicado');
+        Schema::dropIfExists('Tests__Integrantes');
+        Schema::dropIfExists('Tests__Usuario');
+        Schema::dropIfExists('Tests__Grupo');
+        Schema::dropIfExists('Tests__Reactivo_Generado');
+        Schema::dropIfExists('Tests__Generados');
+        Schema::dropIfExists('Tests__Reactivos');
+        Schema::dropIfExists('Tests__Test');
     }
 }

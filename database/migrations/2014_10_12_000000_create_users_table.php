@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        
         Schema::create('password_resets', function (Blueprint $table) {
             $table->string('email')->index()->primary();
             $table->string('token');
@@ -42,6 +43,7 @@ class CreateUsersTable extends Migration
     }
     /**
      * @return void
+     * @var 
      */
     public function down()
     {
