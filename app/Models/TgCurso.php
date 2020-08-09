@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class TgCurso
  *
+ * @property string $Descripcion
  * @property int $id
  * @property string $Nombre
  * @property int|null $ID_Usuario_Creador
@@ -39,7 +40,8 @@ class TgCurso extends Model
     protected $fillable = [
         'Nombre',
         'ID_Usuario_Creador',
-        'Premium'
+        'Premium',
+        'Descripcion'
     ];
 
     public function user()

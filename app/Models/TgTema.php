@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TgTema
- *
+ * @property string $Descripcion
+
  * @property int $id
  * @property string $Nombre
  * @property int|null $ID_Usuario_Creador
@@ -25,7 +26,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property Collection|ReactivosReactivo[] $reactivos__reactivos
  * @property Collection|TgCursoTemasDifuso[] $tg__curso_temas_difusos
  * @property Collection|TgSubtemasDifuso[] $tg__subtemas_difusos
- *
+ * @method  Collection|TgTema get()
+ * @method  TgTema first()
+
  * @package App\Models
  */
 class TgTema extends Model
@@ -41,7 +44,9 @@ class TgTema extends Model
     protected $fillable = [
         'Nombre',
         'ID_Usuario_Creador',
-        'Premium'
+        'Premium',
+        'Descripcion'
+        
     ];
 
     public function user()

@@ -53,6 +53,7 @@ class CreateReactivos extends Migration
         });
         Schema::create('Reactivos__Opciones', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("ID_");
             $table->string("Enunciado1");
             $table->longText("Datos1")->nullable();
             $table->string("Enunciado2");

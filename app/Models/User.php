@@ -8,6 +8,14 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+/**
+ *  archivos necesario para autentificar
+ */
+
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Auth\Authenticatable;
+
+
 
 /**
  * Class User
@@ -58,9 +66,11 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class User extends Model
+class User extends Model  implements AuthenticatableContract 
 {
-
+    
+    use Authenticatable;
+    
     protected $table = 'users';
 
     protected $casts = [
