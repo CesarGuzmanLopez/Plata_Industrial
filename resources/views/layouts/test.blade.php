@@ -13,12 +13,12 @@
 		@yield('styles') 
 	</head> 
     <body>
-  	<div class="sidebar ">
+  	<div class="nav sidebar">
 		<a href="{{route('/')}}">Principal</a>
    	</div> 
-   	<div>
+   
       	 @yield('content')	 
-    </div> 
+
     <script src="{{asset('js/app.js') }}?ver={{env('APP_Version')}}"></script>
 @yield('scripts')
    </body>

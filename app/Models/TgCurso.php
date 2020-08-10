@@ -29,7 +29,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TgCurso extends Model
 {
-
+    public $incrementing = true;
     protected $table = 'tg__curso';
 
     protected $casts = [

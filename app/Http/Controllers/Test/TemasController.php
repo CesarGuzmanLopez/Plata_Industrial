@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Test;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Models\TgTema;
 use App\Models\TgCurso;
 use App\Models\TgGradosAcademico;
 use App\Models\TgSubtemasDifuso;
+use App\Models\TgCursoTemasDifuso;
 
 class TemasController extends Controller
 {
@@ -48,6 +48,8 @@ class TemasController extends Controller
         $nuevoCursoPrincipal->save();
         return back();
     }
+
+    
     
     /***
     * @param int$ id
@@ -80,6 +82,7 @@ class TemasController extends Controller
         $Curso = TgCurso::get()->where('id','=',$id)->first();
         if(!$Curso) return redirect()->route("Temas/");
         $variables = [
+
             'Curso'=>$Curso,
             'Temas'=> TgTema::get()
         ];
@@ -138,6 +141,27 @@ class TemasController extends Controller
         TgGradosAcademico::where('id','=',$id)->delete();;
         return back();
     }
+    public function AddTemaCurso(Request $request,int  $id){
+        $TodosTemas = TgCursoTemasDifuso::where('ID_Curso','=',$id)->get();
+
+            foreach ($TodosTemas as $temas)
+            {
+                TgCursoTemasDifuso::where('ID_Curso','=',$id)->where('ID_Tema', "=",$temas->ID_Tema)->delete();
+            }
+
+            foreach ($request->Temas as  $clave => $valor){
+                
+                if($valor =="1"){
+                    $TemaDif = new TgCursoTemasDifuso();
+                    $TemaDif->ID_Curso = $id;
+                    $TemaDif->ID_Tema=$clave;
+                    $TemaDif->save();
+                }
+            }
+            return back();
+
+    }
+    
     public function AddSubtema(Request $request,int  $id){
         $TodosSubtemas = TgSubtemasDifuso::where('ID_Tema','=',$id)->get();
         foreach ($TodosSubtemas as $subtemas){
@@ -145,7 +169,6 @@ class TemasController extends Controller
         }
         
         foreach ($request->Subtema as  $clave => $valor){
-        
             if($valor =="1"){
                 $TemaDif = new TgSubtemasDifuso();
                 $TemaDif->ID_Tema = $id;
@@ -153,7 +176,6 @@ class TemasController extends Controller
                 $TemaDif->valor= $request->Valores[$clave];
                 $TemaDif->save();
             }
-                   
         }
         return  back();
     }

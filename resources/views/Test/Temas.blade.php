@@ -2,52 +2,8 @@
 @section('content')
 <div class="container-fluid">
 <div class="row">
-<div class="col-12 col-md-5">
-<table class="table-fluid table-striped table-hover  table-bordered" id="">
- 	<thead class="thead-dark">
- 		<tr>
- 			<th> id</th>
- 			<th>Tema</th>
- 			<th>Descripcion</th>
- 			<th>Premium</th>
- 			<th>editar</th>
- 			<th>Eliminar</th>
- 		</tr>
- 	</thead>
- 	<tbody>
- 		@foreach($Temas as $Tema)
- 		<tr>
- 			<td>{{$Tema->id}}</td>
- 			<td>{{$Tema->Nombre}}</td>
- 			<td>{{json_decode($Tema->Descripcion)}}</td>
- 			<td>{{$Tema->Premium?"true": "false"}}</td>
- 			<td><a href="{{route('Temas/EditTemas',$Tema->id)}}">Editar</a></td>
- 			<td><form action="{{route('Temas/ElminarTema',$Tema->id)}}" method="post">  @csrf <button type="submit">Eliminiar</button></form></td>
- 		</tr>
- 		 @endforeach
- 	</tbody>
-</table>
-<form method="post"  action="{{route('Temas/addTemas')}}" method="post" class="m-4">
-    <h4>Añadir un tema</h4>
-    <div>
-    <div>
-    @csrf
-    	 Tema <input name='NombreTema' type="text"  class="form-control">
-    </div>
-    <div>
-    		Descripción <textarea rows="10" cols="20" name="Temas_Desc"  class="form-control"></textarea>
-    </div>
-    <div>
-    Premium {{Form::checkbox('Premium', '1', true,['class'=>'form-control'])}}
-    </div>
-    </div>
-    <button type="submit">Enviar</button>
-</form>
-    <span class="help-block text-danger" role="alert">
-        <strong>{{ $errors->first('NombreTema')?"Existe este Tema o esta en blanco":"" }}</strong>
-    </span>
-</div>
 <div class="col-12 col-md-7">
+<h5>Curso</h5>
 <table class="table-fluid table-striped  table-bordered" id="">
  	<thead>
  		<tr>
@@ -121,6 +77,52 @@
     <strong>{{ $errors->first('NombreGrado')?"Existe este Grado Academico o esta vacio":"" }}</strong>
 </span>
 </div>
+</div>
+<div class="col-12 col-md-5">
+<b>Temas</b>
+<table class="table-fluid table-striped table-hover  table-bordered" id="">
+ 	<thead class="thead-dark">
+ 		<tr>
+ 			<th> id</th>
+ 			<th>Tema</th>
+ 			<th>Descripcion</th>
+ 			<th>Premium</th>
+ 			<th>editar</th>
+ 			<th>Eliminar</th>
+ 		</tr>
+ 	</thead>
+ 	<tbody>
+ 		@foreach($Temas as $Tema)
+ 		<tr>
+ 			<td>{{$Tema->id}}</td>
+ 			<td>{{$Tema->Nombre}}</td>
+ 			<td>{{json_decode($Tema->Descripcion)}}</td>
+ 			<td>{{$Tema->Premium?"true": "false"}}</td>
+ 			<td><a href="{{route('Temas/EditTemas',$Tema->id)}}">Editar</a></td>
+ 			<td><form action="{{route('Temas/ElminarTema',$Tema->id)}}" method="post">  @csrf <button type="submit">Eliminiar</button></form></td>
+ 		</tr>
+ 		 @endforeach
+ 	</tbody>
+</table>
+<form method="post"  action="{{route('Temas/addTemas')}}" method="post" class="m-4">
+    <h4>Añadir un tema</h4>
+    <div>
+    <div>
+    @csrf
+    	 Tema <input name='NombreTema' type="text"  class="form-control">
+    </div>
+    <div>
+    		Descripción <textarea rows="10" cols="20" name="Temas_Desc"  class="form-control"></textarea>
+    </div>
+    <div>
+    Premium {{Form::checkbox('Premium', '1', true,['class'=>'form-control'])}}
+    </div>
+    </div>
+    <button type="submit">Enviar</button>
+</form>
+    <span class="help-block text-danger" role="alert">
+        <strong>{{ $errors->first('NombreTema')?"Existe este Tema o esta en blanco":"" }}</strong>
+    </span>
 </div>
 </div>
 </div>

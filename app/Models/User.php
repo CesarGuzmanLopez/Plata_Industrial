@@ -70,7 +70,7 @@ class User extends Model  implements AuthenticatableContract
 {
     
     use Authenticatable;
-    
+    public $incrementing = true;
     protected $table = 'users';
 
     protected $casts = [
