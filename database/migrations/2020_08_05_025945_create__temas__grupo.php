@@ -13,10 +13,7 @@ class CreateTemasGrupo extends Migration
      */
     public function up()
     {
-        Schema::create('tg__temas', function (Blueprint $table) {
-            
-            
-            $table->id();
+        Schema::create('tg__temas', function (Blueprint $table) {$table->id();
             $table->string("Nombre")->unique();
             $table->json("Descripcion")->nullable();
             $table->unsignedBigInteger("ID_Usuario_Creador")->nullable();
