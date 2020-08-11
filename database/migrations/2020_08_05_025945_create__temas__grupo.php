@@ -15,6 +15,7 @@ class CreateTemasGrupo extends Migration
     {
         Schema::create('tg__temas', function (Blueprint $table) {
             
+            
             $table->id();
             $table->string("Nombre")->unique();
             $table->json("Descripcion")->nullable();
