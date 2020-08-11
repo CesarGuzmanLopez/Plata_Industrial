@@ -13,7 +13,7 @@ class CreateTemasGrupo extends Migration
      */
     public function up()
     {
-        Schema::create('TG__Temas', function (Blueprint $table) {
+        Schema::create('tg__temas', function (Blueprint $table) {
             $table->id();
             $table->string("Nombre")->unique();
             $table->json("Descripcion")->nullable();
@@ -23,7 +23,7 @@ class CreateTemasGrupo extends Migration
             $table->timestamps();
             $table->foreign("ID_Usuario_Creador")->on("users")->references("id")->nullOnDelete()->cascadeOnUpdate();
         });
-        Schema::create('TG__Curso', function (Blueprint $table) {
+        Schema::create('tg__curso', function (Blueprint $table) {
             $table->id();
             $table->string("Nombre")->unique();
             $table->json("Descripcion")->nullable();
@@ -32,35 +32,35 @@ class CreateTemasGrupo extends Migration
             $table->timestamps();
             $table->foreign("ID_Usuario_Creador")->on("users")->references("id")->nullOnDelete()->cascadeOnUpdate();
         });
-        Schema::create('TG__Grados_Academicos', function (Blueprint $table) {
+        Schema::create('tg__grados_academicos', function (Blueprint $table) {
             $table->id();
             $table->string("Nombre")->unique();
             $table->unsignedBigInteger("ID_Usuario_Creador")->nullable();
             $table->timestamps();
             $table->foreign("ID_Usuario_Creador")->on("users")->references("id")->nullOnDelete()->cascadeOnUpdate();
         });
-        Schema::create('TG__Subtemas_Difusos', function (Blueprint $table) {
+        Schema::create('tg__subtemas_difusos', function (Blueprint $table) {
             $table->unsignedBigInteger("ID_Tema");
             $table->unsignedBigInteger("ID_Subtema");
             $table->float("valor")->default(100);
-            $table->foreign("ID_Tema")->on("TG__Temas")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreign("ID_Subtema")->on("TG__Temas")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign("ID_Tema")->on("tg__temas")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign("ID_Subtema")->on("tg__temas")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
             $table->primary(['ID_Tema','ID_Subtema']);
         });
-        Schema::create('TG__Curso_Temas_Difusos', function (Blueprint $table) {
+        Schema::create('tg__curso_temas_difusos', function (Blueprint $table) {
             $table->unsignedBigInteger("ID_Tema");
             $table->unsignedBigInteger("ID_Curso");
             $table->float("valor")->default(100);
-            $table->foreign("ID_Tema")->on("TG__Temas")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreign("ID_Curso")->on("TG__Curso")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign("ID_Tema")->on("tg__temas")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign("ID_Curso")->on("tg__curso")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
             $table->primary(['ID_Tema','ID_Curso']);
         });
-        Schema::create('TG__Grado_Cursos_difusos', function (Blueprint $table) {
+        Schema::create('tg__grado_cursos_difusos', function (Blueprint $table) {
             $table->unsignedBigInteger("ID_Grado");
             $table->unsignedBigInteger("ID_Curso");
             $table->float("valor")->default(100);
-            $table->foreign("ID_Grado")->on("TG__Grados_Academicos")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreign("ID_Curso")->on("TG__Curso")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign("ID_Grado")->on("tg__grados_academicos")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign("ID_Curso")->on("tg__curso")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
             $table->primary(['ID_Grado','ID_Curso']);
         });     
     }
@@ -72,11 +72,11 @@ class CreateTemasGrupo extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('TG__Grado_Cursos_difusos');
-        Schema::dropIfExists('TG__Curso_Temas_Difusos');
-        Schema::dropIfExists('TG__Subtemas_Difusos');
-        Schema::dropIfExists('TG__Grados_Academicos');
-        Schema::dropIfExists('TG__Curso');
-        Schema::dropIfExists('TG__Temas');
+        Schema::dropIfExists('tg__grado_cursos_difusos');
+        Schema::dropIfExists('tg__curso_temas_difusos');
+        Schema::dropIfExists('tg__subtemas_difusos');
+        Schema::dropIfExists('tg__grados_academicos');
+        Schema::dropIfExists('tg__curso');
+        Schema::dropIfExists('tg__temas');
     }
 }

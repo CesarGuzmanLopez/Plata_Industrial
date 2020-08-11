@@ -44,7 +44,7 @@ class CreateMembresia extends Migration
                 
             });
         
-        Schema::create('membresias__Usuario', function (Blueprint $table) {
+        Schema::create('membresias__usuario', function (Blueprint $table) {
             $table->unsignedBigInteger("ID_Usuario");
             $table->unsignedBigInteger("ID_Membrecia");
             $table->string("Numero_Membrecia")->unique();
@@ -59,7 +59,7 @@ class CreateMembresia extends Migration
             $table->primary(['ID_Usuario','ID_Membrecia']);
             $table->foreign("ID_tiket")->on("membresias__Tiket")->references("id")->nullOnDelete()->cascadeOnUpdate();   
         });
-        Schema::create('membresias__Grupo', function (Blueprint $table) {
+        Schema::create('membresias__grupo', function (Blueprint $table) {
             $table->unsignedBigInteger("ID_Grupo");
             $table->unsignedBigInteger("ID_Membrecia");
             $table->string("Numero_Membrecia")->unique();
@@ -67,7 +67,7 @@ class CreateMembresia extends Migration
             $table->date("Fin");
             $table->unsignedBigInteger("ID_tiket")->nullable();
             $table->timestamps();
-            $table->foreign("ID_Grupo")->on("GU__Grupos")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign("ID_Grupo")->on("gu__grupos")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign("ID_Membrecia")->on("membresias__membresia")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
             $table->primary(['ID_Grupo','ID_Membrecia']);
             $table->foreign("ID_tiket")->on("membresias__Tiket")->references("id")->nullOnDelete()->cascadeOnUpdate();
@@ -81,8 +81,8 @@ class CreateMembresia extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('membresias__Usuario');
-        Schema::dropIfExists('membresias__Grupo');
+        Schema::dropIfExists('membresias__usuario');
+        Schema::dropIfExists('membresias__grupo');
         Schema::dropIfExists('membresias__Tiket');
         Schema::dropIfExists('membresias__membresia');
     }

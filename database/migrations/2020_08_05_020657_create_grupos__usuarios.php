@@ -13,25 +13,25 @@ class CreateGruposUsuarios extends Migration
      */
     public function up()
     {
-        Schema::create('GU__Tipo', function (Blueprint $table) {
+        Schema::create('gu__tipo', function (Blueprint $table) {
             $table->id();
             $table->string("Nombre");
         });
-        Schema::create('GU__Grupos', function (Blueprint $table) {
+        Schema::create('gu__grupos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("Tipo_Grupo")->nullable();
             $table->unsignedBigInteger("ID_Usuario_Creador")->nullable();
             $table->timestamps();
             $table->foreign("ID_Usuario_Creador")->on("users")->references("id")->nullOnDelete();
-            $table->foreign("Tipo_Grupo")->on("GU__Tipo")->references("id")->nullOnDelete();
+            $table->foreign("Tipo_Grupo")->on("gu__tipo")->references("id")->nullOnDelete();
         });
-        Schema::create('GU__Integrantes', function (Blueprint $table) {
+        Schema::create('gu_integrantes', function (Blueprint $table) {
             $table->unsignedBigInteger("ID_User");
             $table->unsignedBigInteger("ID_grupo");
             $table->bigInteger("posicion")->default(0)->nullable();
             $table->timestamps();
             $table->foreign("ID_User")->on("users")->references("id")->cascadeOnDelete();
-            $table->foreign("ID_grupo")->on("GU__Grupos")->references("id")->cascadeOnDelete();
+            $table->foreign("ID_grupo")->on("gu__grupos")->references("id")->cascadeOnDelete();
             $table->primary(['ID_User','ID_grupo']);
         });
     }
@@ -43,8 +43,8 @@ class CreateGruposUsuarios extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('GU__Integrantes');
-        Schema::dropIfExists('GU__Grupos');
-        Schema::dropIfExists('GU__Tipo');
+        Schema::dropIfExists('gu_integrantes');
+        Schema::dropIfExists('gu__grupos');
+        Schema::dropIfExists('gu__tipo');
     }
 }

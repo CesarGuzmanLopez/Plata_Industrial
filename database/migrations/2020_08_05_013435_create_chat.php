@@ -38,7 +38,7 @@ class CreateChat extends Migration
             $table->foreign("ID_Participante")->references("id")->on("users")->nullOnDelete();
            
         });
-            Schema::create('chat__Notificaciones', function (Blueprint $table) {
+            Schema::create('chat__notificaciones', function (Blueprint $table) {
                 
                 $table->id();
                 $table->unsignedBigInteger("ID_Mensaje");
@@ -67,7 +67,7 @@ class CreateChat extends Migration
      */
     public function down()
     {        
-        Schema::dropIfExists('chat__Notificaciones');
+        Schema::dropIfExists('chat__notificaciones');
         Schema::dropIfExists('chat__participantes');
         Schema::dropIfExists('chat__mensajes');
         Schema::dropIfExists('chat__conversaciones');

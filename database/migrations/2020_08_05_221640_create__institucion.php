@@ -14,7 +14,7 @@ class CreateInstitucion extends Migration
      */
     public function up()
     {
-    Schema::create('Institucion__Institucion', function (Blueprint $table) {
+    Schema::create('institucion__institucion', function (Blueprint $table) {
             $table->id();
             $table->string("Nombre_institucion");
             $table->unsignedBigInteger("ID_Responsable");
@@ -28,45 +28,45 @@ class CreateInstitucion extends Migration
             $table->foreign("ID_Membrecia")->on("membresias__membresia")->references("id");
             $table->timestamps();
         });
-        Schema::create('Institucion__Profesores', function (Blueprint $table) {
+        Schema::create('institucion__profesores', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("ID_profesor");
             $table->unsignedBigInteger("ID_institucion");
             $table->foreign("ID_profesor")->on("users")->references("id");
-            $table->foreign("ID_institucion")->on("Institucion__Institucion")->references("id");
+            $table->foreign("ID_institucion")->on("institucion__institucion")->references("id");
             $table->string("Grado_Estudio")->comment("Grado en el que esta el profesor")->nullable();
             $table->string("Descripcion")->comment("")->nullable();
            $table->timestamps();
         });
-        Schema::create('Institucion__Alumnos', function (Blueprint $table) {
+        Schema::create('institucion__alumnos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("ID_Alumno");
             $table->unsignedBigInteger("ID_institucion");
             $table->foreign("ID_Alumno")->on("users")->references("id");
-            $table->foreign("ID_institucion")->on("Institucion__Institucion")->references("id");
+            $table->foreign("ID_institucion")->on("institucion__institucion")->references("id");
             $table->string("Grado_Estudio")->comment("Grado en el que esta el profesor")->nullable();
             $table->string("Descripcion")->comment("")->nullable();
             $table->timestamps();
         });
-        Schema::create('Institucion__Grupos',function (Blueprint $table){
+        Schema::create('institucion__grupos',function (Blueprint $table){
             $table->id();
             $table->unsignedBigInteger("ID_Institucion");
             $table->unsignedBigInteger("ID_Profesor");
             $table->unsignedBigInteger("ID_Curso");
             $table->text("Descripcion");
             $table->json("Data");
-            $table->foreign("ID_Institucion")->on("Institucion__Institucion")->references("id");
-            $table->foreign("ID_Profesor")->on("Institucion__Profesores")->references("id");
-            $table->foreign("ID_Curso")->on("TG__Curso")->references("id");
+            $table->foreign("ID_Institucion")->on("institucion__institucion")->references("id");
+            $table->foreign("ID_Profesor")->on("institucion__profesores")->references("id");
+            $table->foreign("ID_Curso")->on("tg__curso")->references("id");
            $table->timestamps();
         });
-        Schema::create("Institucion__Grupo_Alumnos", function (Blueprint $table){
+        Schema::create("institucion__grupo_alumnos", function (Blueprint $table){
             $table->unsignedBigInteger("ID_Grupo");
             $table->unsignedBigInteger("ID_Alumno");
             $table->integer("Numero_lista");
             $table->boolean("Activo");
-            $table->foreign("ID_Grupo")->on("Institucion__Grupos")->references("id");
-            $table->foreign("ID_Alumno")->on("Institucion__Alumnos")->references("id");
+            $table->foreign("ID_Grupo")->on("institucion__grupos")->references("id");
+            $table->foreign("ID_Alumno")->on("institucion__alumnos")->references("id");
             $table->primary(["ID_Grupo","ID_Alumno"]);
         });
     }
@@ -78,10 +78,10 @@ class CreateInstitucion extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Institucion__Grupo_Alumnos');
-        Schema::dropIfExists('Institucion__Grupos');
-        Schema::dropIfExists('Institucion__Alumnos');
-        Schema::dropIfExists('Institucion__Profesores');
-        Schema::dropIfExists('Institucion__Institucion');
+        Schema::dropIfExists('institucion__grupo_alumnos');
+        Schema::dropIfExists('institucion__grupos');
+        Schema::dropIfExists('institucion__alumnos');
+        Schema::dropIfExists('institucion__profesores');
+        Schema::dropIfExists('institucion__institucion');
     }
 }
