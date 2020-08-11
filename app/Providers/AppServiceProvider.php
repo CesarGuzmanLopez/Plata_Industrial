@@ -1,7 +1,8 @@
 <?php
 namespace App\Providers;
-use Schema;
+
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,10 +22,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    use Illuminate\Support\Facades\Schema;
+  
     
     public function boot()
     {
+        
         Schema::defaultStringLength(191);
     }
 }
