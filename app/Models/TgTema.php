@@ -34,7 +34,7 @@ use Illuminate\Database\Eloquent\Model;
 class TgTema extends Model
 {
 
-    protected $table = 'tg__temas';
+    protected $table = 'tgwtemas';
 
     protected $casts = [
         'ID_Usuario_Creador' => 'int',

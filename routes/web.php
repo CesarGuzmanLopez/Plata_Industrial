@@ -53,5 +53,7 @@ Route::group(['middleware' =>"auth", 'prefix' => 'CrearCurso', 'as' => 'CrearCur
 
 Route::group(['middleware' =>"auth", 'prefix' => 'Reactivos', 'as' => 'Reactivos'], function (){
     $path="Test\ReactivosController";
-    Route::get  ('/', "$path@index")->name("/"); 
+    Route::get  ('/', "$path@index")->name("/");
+    Route::post('/', "$path@uploadImagen")->name("/subirImagen");
+    
 });

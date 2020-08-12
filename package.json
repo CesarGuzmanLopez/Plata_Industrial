@@ -20,10 +20,13 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "@tinymce/tinymce-vue": "^3.2.2",
         "bootstrap": "^4.5.2",
         "bootstrap-vue": "^2.16.0",
         "jquery": "^3.5.1",
         "jquery-ui": "^1.12.1",
-        "vue": "^2.6.11"
+        "update": "^0.7.4",
+        "vue": "^2.6.11",
+        "vue-froala-wysiwyg": "^3.2.1"
     }
 }
