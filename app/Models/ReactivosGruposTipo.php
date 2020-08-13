@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property string $Nombre
+ * @property string $Descripcion
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  *
@@ -28,7 +29,8 @@ class ReactivosGruposTipo extends Model
     protected $table = 'reactivos__grupos_tipos';
 
     protected $fillable = [
-        'Nombre'
+        'Nombre',
+        'Descripcion'
     ];
 
     public function reactivos__reactivos()

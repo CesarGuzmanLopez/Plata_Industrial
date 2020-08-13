@@ -20,13 +20,20 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "@dimakorotkov/tinymce-mathjax": "^1.0.4",
         "@tinymce/tinymce-vue": "^3.2.2",
         "bootstrap": "^4.5.2",
         "bootstrap-vue": "^2.16.0",
         "jquery": "^3.5.1",
         "jquery-ui": "^1.12.1",
+        "mathjax": "^3.0.5",
+        "tinymce": "^5.4.1",
+        "tinymce-formula": "^1.1.0",
+        "tinymce-latex": "^1.0.6",
         "update": "^0.7.4",
         "vue": "^2.6.11",
-        "vue-froala-wysiwyg": "^3.2.1"
+        "vue-froala-wysiwyg": "^3.2.1",
+        "vue-mathjax": "0.0.11",
+        "vue-tinymce": "^1.0.5"
     }
 }

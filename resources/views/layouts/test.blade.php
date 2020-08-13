@@ -20,6 +20,7 @@
       	 @yield('content')	 
 
     <script src="{{asset('js/app.js') }}?ver={{env('APP_Version')}}"></script>
+
 @yield('scripts')
    </body>
 </html>

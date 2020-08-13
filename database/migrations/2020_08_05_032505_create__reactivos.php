@@ -25,14 +25,15 @@ class CreateReactivos extends Migration
         Schema::create('reactivos__grupos_tipos', function (Blueprint $table) {
             $table->id();
             $table->string("Nombre")->unique();
+            $table->string("Descripcion");
             $table->timestamps();
         });
         Schema::create('reactivos__tipos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("ID_Grupo")->nullable();
             $table->string("Nombre_Tipo")->unique();
-            $table->string("Ruta")->unique();
-            $table->text("Datos");
+            $table->string("Ruta")->unique()->nullable();
+            $table->json("Datos");
             $table->boolean("Activo")->default(false);
             $table->timestamps();
             $table->foreign("ID_Grupo")->on("reactivos__grupos_tipos")->references("id")->nullOnDelete()->cascadeOnUpdate();
@@ -45,7 +46,7 @@ class CreateReactivos extends Migration
             $table->unsignedBigInteger("ID_Creador")->nullable();
             $table->string("Nombre")->unique();
             $table->longText("Enunciado")->nullable();
-            $table->longText("Datos")->nullable();            
+            $table->json("Datos")->nullable();            
             $table->foreign("ID_Grupo_Reactivos")->on("reactivos__grupos_tipos")->references("id")->nullOnDelete()->cascadeOnUpdate();
             $table->foreign("ID_Tema")->on("tg__temas")->references("id")->nullOnDelete()->cascadeOnUpdate();
             $table->foreign("ID_Tema_Interes")->on("reactivos__temas_interest")->references("id")->nullOnDelete()->cascadeOnUpdate();
