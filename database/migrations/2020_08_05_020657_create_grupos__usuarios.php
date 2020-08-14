@@ -26,7 +26,7 @@ class CreateGruposUsuarios extends Migration
             $table->foreign("ID_Usuario_Creador")->on("users")->references("id")->nullOnDelete();
             $table->foreign("Tipo_Grupo")->on("gu__tipo")->references("id")->nullOnDelete();
         });
-        Schema::create('gu_integrantes', function (Blueprint $table) {
+        Schema::create('gu__integrantes', function (Blueprint $table) {
             $table->unsignedBigInteger("ID_User");
             $table->unsignedBigInteger("ID_grupo");
             $table->bigInteger("posicion")->default(0)->nullable();
@@ -44,7 +44,7 @@ class CreateGruposUsuarios extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gu_integrantes');
+        Schema::dropIfExists('gu__integrantes');
         Schema::dropIfExists('gu__grupos');
         Schema::dropIfExists('gu__tipo');
     }
