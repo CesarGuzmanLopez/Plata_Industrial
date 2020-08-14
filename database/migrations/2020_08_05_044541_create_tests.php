@@ -105,7 +105,7 @@ class CreateTests extends Migration
               $table->json("Data1")->nullable();  
               $table->json("Data2")->nullable();
               $table->foreign("ID_Test_hecho")->on("tests__aplicado")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
-              $table->foreign("ID_Respuesta")->on("Reactivos__Opciones")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+              $table->foreign("ID_Respuesta")->on("reactivos__opciones")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
               $table->primary(['ID_Test_hecho','ID_Respuesta']);
         });
         Schema::create('tests__listanegra', function (Blueprint $table) {
