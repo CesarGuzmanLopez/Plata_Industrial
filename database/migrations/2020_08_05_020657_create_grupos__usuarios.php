@@ -16,6 +16,7 @@ class CreateGruposUsuarios extends Migration
         Schema::create('gu__tipo', function (Blueprint $table) {
             $table->id();
             $table->string("Nombre");
+            
         });
         Schema::create('gu__grupos', function (Blueprint $table) {
             $table->id();
