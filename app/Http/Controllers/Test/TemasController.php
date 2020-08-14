@@ -63,7 +63,6 @@ class TemasController extends Controller
         $TemasTEmp  = TgTema::get()->where("id","<>",$Tema->id);
         $Temas =  collect([]);
         foreach ($TemasTEmp as   $algunTema){
-           
             if(!$algunTema->tg__subtemas_difusos->where('ID_Subtema','=',$id)->first())
                 $Temas->push($algunTema);
         }

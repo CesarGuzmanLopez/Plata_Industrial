@@ -7,11 +7,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
+
 */
 
 Auth::routes();
@@ -56,4 +52,11 @@ Route::group(['middleware' =>"auth", 'prefix' => 'Reactivos', 'as' => 'Reactivos
     Route::get  ('/', "$path@index")->name("/");
     Route::post('/uploadImagen', "$path@uploadImagen")->name("/subirImagen");
     Route::get('/AdminReactivos', "$path@AdminReactivos")->name("/AdminReactivos");
+    Route::get('/editarReactivo/{id}', "$path@editarReactivo")->name("/editarReactivo");
+    Route::post('/editarReactivo/{id}', "$path@editReactivo")->name("/editarReactivopost");
+    Route::get('/AdminRetroalmientacion',"$path@AdminRetroalmientacion")->name("/AdminRetroalmientacion");
+   
+    Route::post('/AddReactivo', "$path@AddReactivo")->name("/AddReactivo");
+    Route::post('/EliminarReactivo/{id}',"$path@EliminarReactivo")->name('/EliminarReactivo');
+    
 });

@@ -1,12 +1,16 @@
-	<editor name="{{$name}}" id="{{$name}}"  class="border" placeholder="Ingresa la pregunta" api-key='y384aesqbqgvxfvpzzc4i6h5sujdgwsxf4gf7uajcr2o2tkv' pla :init="{ 
+	<editor name="{{$name}}" id="{{$name}}" value="{{$value??(old($name)??'')}}"   class="border" placeholder="Ingresa {{$name}}" api-key='y384aesqbqgvxfvpzzc4i6h5sujdgwsxf4gf7uajcr2o2tkv' pla :init="{ 
                  	selector: 'div.tinymce',
-                    toolbar: 'forecolor backcolor charmap insert hr',
-                    menubar: 'edit insert view format table tools wordcount  ' ,
+                    external_plugins: {'mathjax': '/js/plugins/tinymce-mathjax/plugin.min.js'},
+                 	mathjax: {
+                        lib: '/js/mathjax/es5/tex-mml-chtml.js', 
+                      },
+                    toolbar: 'forecolor backcolor charmap insert hr mathjax',
+                    menubar: 'edit insert view format table tools wordcount ' ,
                   	inline: true,
-				     
-                  	plugins: 'table image code advcode advlist directionality charmap template wordcount hr mathjax' ,
+				
+                  	plugins: 'table image code advlist directionality charmap template wordcount  mathjax  autoresize hr' ,
                   	branding: false,
-                
+              
                   	images_upload_url: '{{route('Reactivos/subirImagen')}}',
                	 	images_upload_handler: function (blobInfo, success, failure) {
                    	var xhr, formData;

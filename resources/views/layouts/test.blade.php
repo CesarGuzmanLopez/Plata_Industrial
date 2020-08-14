@@ -16,11 +16,9 @@
   	<div class="nav sidebar">
 		<a href="{{route('/')}}">Principal</a>
    	</div> 
-   
       	 @yield('content')	 
-
+    <script src="{{asset('/js/tinymce/tinymce.min.js')}}"></script>
     <script src="{{asset('js/app.js') }}?ver={{env('APP_Version')}}"></script>
-
 @yield('scripts')
    </body>
 </html>

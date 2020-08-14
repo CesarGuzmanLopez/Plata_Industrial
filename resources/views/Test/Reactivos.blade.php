@@ -5,7 +5,17 @@
 	@include('vue_code.addtextarea_vue', ['id_table' => 'table'])
 </div>
 --}}
-<!-- Crear preguntas -->
+<!-- Crear Reactivos -->
+<div>
 <a href="{{route('Reactivos/AdminReactivos')}}">Administrar Reactivos y Respuestas</a>
+</div>
+<!-- Crear Reactivos -->
+<div><a href="{{route('Reactivos/AdminRetroalmientacion')}}">RetroAlimentacion</a></div>
+
+<p><span class="math-tex">\( \frac{s}{p} \)</span>fdhfdfhngkljnmsdfg</p>
+<p>sdfgbnsdñfmglñsdmñgmsdfñmfg</p>
+<p><strong>asdhfbaksjashfkjasdasdh<span class="math-tex">\( \int_{a}^{b} x^2 dx \)</span></strong></p>
+<hr>
+<p>&nbsp;</p>
 
 @endsection
