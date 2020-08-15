@@ -1,10 +1,13 @@
 	<editor name="{{$name}}" id="{{$name}}" value="{{$value??(old($name)??'')}}"   class="border" placeholder="Ingresa {{$name}}" api-key='y384aesqbqgvxfvpzzc4i6h5sujdgwsxf4gf7uajcr2o2tkv' pla :init="{ 
                  	selector: 'div.tinymce',
-                    external_plugins: {'mathjax': '/js/plugins/tinymce-mathjax/plugin.min.js'},
+                    external_plugins: {
+                    		'mathjax': '/js/plugins/tinymce-mathjax/plugin.min.js',
+          					'tiny_mce_wiris': 'https://www.wiris.net/demo/plugins/tiny_mce/plugin.js' 
+                    },
                  	mathjax: {
                         lib: '/js/mathjax/es5/tex-mml-chtml.js', 
                       },
-                    toolbar: 'forecolor backcolor charmap insert hr mathjax',
+                    toolbar: 'forecolor backcolor charmap insert hr mathjax  tiny_mce_wiris_formulaEditorChemistry',
                     menubar: 'edit insert view format table tools wordcount ' ,
                   	inline: true,
 				

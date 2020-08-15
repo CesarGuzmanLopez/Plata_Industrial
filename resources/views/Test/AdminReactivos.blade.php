@@ -3,7 +3,7 @@
 <div id="AdminReactivos" class="container-fluid">
 	<div class="row">
 		<div class="col-12">
-<table class="table-fluid table-striped  table-bordered"  id="">
+<table class="table-fluid table-striped  table-bordered"  id=""  v-pre>
  	<thead>
  		<tr>
  			<th> id</th>
@@ -53,7 +53,7 @@
         <fieldset>
    		 <legend class="text-center header">Nuevo reactivo</legend>
         <div class="form-group">
-        	<label class="label">Nombre Reactivo</label>
+        	<label class="label" >Nombre Reactivo</label>
             <div class="col-md-12">
                 <input id="Nombre_Reactivo" value="{{old('Nombre_Reactivo')??''}}" name="Nombre_Reactivo" type="text" placeholder="Nombre Reactivo" class="form-control" required >
             </div>
@@ -81,10 +81,8 @@
                 <div class="col-md-12">
     						@foreach($Grados as $Grado)
     							<div class="border"><label class="form-group"><input type="checkbox" value="{{$Grado->id}}"  name="Grado[]">{{$Grado->Nombre}}</label>
-    							    				<label class="form-group">dificultad: <input type="range" value="0" name="Dificultad[$Grado->id}]"></label>
-    							
+    							    				<label class="form-group">dificultad: <input type="range" value="0" name="Dificultad[{{$Grado->id}}]"></label>
     							</div>
-    					
     						@endforeach
                 </div>
           </div>	

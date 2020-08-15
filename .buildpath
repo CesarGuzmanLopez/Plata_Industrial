@@ -146,6 +146,11 @@
 			<attribute name="composer" value="vendor"/>
 		</attributes>
 	</buildpathentry>
+	<buildpathentry kind="src" path="vendor/htmlmin/htmlmin/src">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
 	<buildpathentry excluding="functions/" kind="src" path="vendor/laminas/laminas-diactoros/src">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
@@ -196,6 +201,11 @@
 			<attribute name="composer" value="vendor"/>
 		</attributes>
 	</buildpathentry>
+	<buildpathentry kind="src" path="vendor/laravelcollective/html/src">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
 	<buildpathentry kind="src" path="vendor/lcobucci/jwt/src">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
@@ -216,6 +226,11 @@
 			<attribute name="composer" value="vendor"/>
 		</attributes>
 	</buildpathentry>
+	<buildpathentry kind="src" path="vendor/league/mime-type-detection/src">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
 	<buildpathentry kind="src" path="vendor/league/oauth2-server/src">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
@@ -227,6 +242,11 @@
 		</attributes>
 	</buildpathentry>
 	<buildpathentry kind="src" path="vendor/monolog/monolog/src/Monolog">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry kind="src" path="vendor/mrclay/minify/min/lib">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>

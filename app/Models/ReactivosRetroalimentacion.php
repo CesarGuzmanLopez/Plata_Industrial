@@ -9,11 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class ReactivosRetroalimentacion
- *
+ * @property int $id
  * @property int $ID_Reactivo
  * @property int $ID_Grado
  * @property string|null $Retroalimentacion
- *
+ * @property string|null $Datos
  * @property TgGradosAcademico $tg_grados_academico
  * @property ReactivosReactivo $reactivos_reactivo
  *
@@ -23,9 +23,6 @@ class ReactivosRetroalimentacion extends Model
 {
 
     protected $table = 'reactivos__retroalimentacion';
-
-    public $incrementing = false;
-
     public $timestamps = false;
 
     protected $casts = [
@@ -34,7 +31,8 @@ class ReactivosRetroalimentacion extends Model
     ];
 
     protected $fillable = [
-        'Retroalimentacion'
+        'Retroalimentacion',
+        'Datos'
     ];
 
     public function tg_grados_academico()

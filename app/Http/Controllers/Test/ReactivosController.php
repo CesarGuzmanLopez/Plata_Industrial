@@ -11,6 +11,7 @@ use App\Models\TgGradosAcademico;
 use App\Models\TgTema;
 use App\Models\ReactivosGruposTipo;
 use App\Models\ReactivosPopularidad;
+use App\Models\ReactivosRetroalimentacion;
 class ReactivosController extends Controller
 {
     public function __construct()
@@ -26,6 +27,7 @@ class ReactivosController extends Controller
     public function AdminReactivos(){
         
         $data =[
+            'Retroalimentacion'=>ReactivosRetroalimentacion::get(),
             'Reactivos' => ReactivosReactivo::get(),
             'Temas'=>TgTema::get(),
             'Cursos'=>TgCurso::get(),
@@ -67,7 +69,6 @@ class ReactivosController extends Controller
             $this->validate($request, [
                 'Nombre_Reactivo'   => 'required|string|min:3|max:35|unique:reactivos__reactivos,Nombre',
                 'Enunciado'=>'required|string'
-                
             ]);
             $Reactivo = new ReactivosReactivo();
             $Reactivo->Nombre = $request->Nombre_Reactivo;
@@ -84,7 +85,6 @@ class ReactivosController extends Controller
                     $relacion->ID_Grado=$G;
                     $relacion->ID_Reactivo=  $Reactivo->id;
                     $relacion->Dificultad_Creador =$request->Dificultad[ $relacion->ID_Grado];
-                    
                     $relacion->save();
             }
         return back();
@@ -105,6 +105,53 @@ class ReactivosController extends Controller
         return view('Test.editarReactivo')->with($data);
     }
     public function AdminRetroalmientacion(){
-        return "asdfas";
+        $data=[
+            'Retroalimentaciones'=>ReactivosRetroalimentacion::get(),
+            'Reactivos' => ReactivosReactivo::get(),
+            'Grados'=>TgGradosAcademico::get(),
+        ];
+        return view('Test.Retro')->with($data);
     }
+    public  function AgregaRetroalimentacion(Request $request){
+        $this->validate($request, [
+            'Grado'=> 'bail|required|int',
+            'Reactivo'=> 'bail|required|int',
+            //'Grado'=>'unique:reactivos__retroalimentacion,ID_Grado,Null,ID_Reactivo'.$request->Reactivo clave compuesta unica
+        ]);
+        $retro = new ReactivosRetroalimentacion();
+        $retro->ID_Grado =$request->Grado;
+        $retro->ID_Reactivo =$request->Reactivo;
+        $retro->Retroalimentacion =json_encode($request->Retroalimentacion);
+        $retro->Datos=json_encode($request->Data);
+        $retro->save();
+        return back();
+    }
+    public function EliminarRetroalimentacion($id){
+        ReactivosRetroalimentacion::where('id','=',$id)->first()->delete();
+        return back();
+    }
+    public function editarRetro($id){
+        $data=[
+            'Retroalimentacion'=>ReactivosRetroalimentacion::where('id','=',$id)->first(),
+            'Reactivos' => ReactivosReactivo::get(),
+            'Grados'=>TgGradosAcademico::get(),
+        ];
+        return view('Test.editarRetro')->with($data);
+        return back();
+    }
+    public function editarRetroPost(Request $request,$id){
+            $retro = ReactivosRetroalimentacion::where('id','=',$id)->first();
+            $retro->ID_Grado =$request->Grado;
+            $retro->ID_Reactivo =$request->Reactivo;
+            $retro->Retroalimentacion =json_encode($request->Retroalimentacion);
+            $retro->Datos=json_encode($request->Data);
+            $retro->save();
+            return redirect()->route('Reactivos/AdminRetroalmientacion');
+    }
+    
+    
+    
+    
+    
 }
+

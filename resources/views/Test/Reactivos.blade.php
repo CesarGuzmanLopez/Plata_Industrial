@@ -7,15 +7,10 @@
 --}}
 <!-- Crear Reactivos -->
 <div>
-<a href="{{route('Reactivos/AdminReactivos')}}">Administrar Reactivos y Respuestas</a>
+<a href="{{route('Reactivos/AdminReactivos')}}">Administrar Reactivos</a>
 </div>
-<!-- Crear Reactivos -->
-<div><a href="{{route('Reactivos/AdminRetroalmientacion')}}">RetroAlimentacion</a></div>
-
-<p><span class="math-tex">\( \frac{s}{p} \)</span>fdhfdfhngkljnmsdfg</p>
-<p>sdfgbnsdñfmglñsdmñgmsdfñmfg</p>
-<p><strong>asdhfbaksjashfkjasdasdh<span class="math-tex">\( \int_{a}^{b} x^2 dx \)</span></strong></p>
-<hr>
-<p>&nbsp;</p>
+<div>
+	<a href="{{route('Reactivos/AdminRetroalmientacion')}}">Administrar Retroalimentaciones</a>
+</div>
 
 @endsection

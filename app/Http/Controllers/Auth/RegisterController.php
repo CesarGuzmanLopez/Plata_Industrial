@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
+    /*
+     * no permitir registrarse en estos momentos
+     */
     public function showRegistrationForm()
     {
     //  return view('');

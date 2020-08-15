@@ -1,3 +1,10 @@
+<?php 
+/**
+ * @author: Cesar
+ * @todo Edito los cursos hago una consulta
+ */
+
+?>
 @extends('layouts.test')
 @section('content')
 <div class="container-fluid">

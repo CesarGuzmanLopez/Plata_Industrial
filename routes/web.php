@@ -55,7 +55,12 @@ Route::group(['middleware' =>"auth", 'prefix' => 'Reactivos', 'as' => 'Reactivos
     Route::get('/editarReactivo/{id}', "$path@editarReactivo")->name("/editarReactivo");
     Route::post('/editarReactivo/{id}', "$path@editReactivo")->name("/editarReactivopost");
     Route::get('/AdminRetroalmientacion',"$path@AdminRetroalmientacion")->name("/AdminRetroalmientacion");
-   
+    Route::post('/AgregaRetroalimentacion',"$path@AgregaRetroalimentacion")->name("/AgregaRetroalimentacion");
+    
+    Route::post('/EliminarRetroalimentacion/{id}',"$path@EliminarRetroalimentacion")->name('/EliminarRetroalimentacion');
+    Route::get('/editarRetro/{id}',"$path@editarRetro")->name('/editarRetro');
+    Route::post('/editarRetro/{id}',"$path@editarRetroPost")->name('/editarRetroPost');
+    
     Route::post('/AddReactivo', "$path@AddReactivo")->name("/AddReactivo");
     Route::post('/EliminarReactivo/{id}',"$path@EliminarReactivo")->name('/EliminarReactivo');
     

@@ -88,12 +88,13 @@ class CreateReactivos extends Migration
             $table->primary(['ID_Reactivo','ID_tipo','ID_Grado']);
         });
         Schema::create('reactivos__retroalimentacion', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger("ID_Reactivo");
             $table->unsignedBigInteger("ID_Grado") ;
-            $table->foreign("ID_Reactivo")->on("reactivos__reactivos")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreign("ID_Grado")->on("tg__grados_academicos")->references("id")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign("ID_Reactivo")->on("reactivos__reactivos")->references("id")->cascadeOnUpdate();
+            $table->foreign("ID_Grado")->on("tg__grados_academicos")->references("id")->cascadeOnUpdate();
             $table->json("Retroalimentacion")->nullable();
-            $table->primary(['ID_Reactivo','ID_Grado']);
+            $table->json("Datos")->nullable();
         });
         Schema::create('reactivos__popularidad', function (Blueprint $table) {
             $table->unsignedBigInteger("ID_Reactivo");

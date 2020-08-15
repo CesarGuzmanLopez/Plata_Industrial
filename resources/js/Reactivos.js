@@ -2,8 +2,7 @@ if($("#AdminReactivos").length!=0) app = new Vue({
     el: '#AdminReactivos',
 data() {
       	 return {
-      	
- 
+			
 		}
     },
    components: {

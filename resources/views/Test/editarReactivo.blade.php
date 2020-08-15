@@ -46,11 +46,9 @@
     								 @endif
     							@endforeach
     				<div class="border"><b><label class="form-group"><input type="checkbox" value="{{$Grado->id}}"  name="Grado[]"  {{$selected }}>{{$Grado->Nombre}}</label></b>
-    				<label class="form-group">dificultad: <input type="range" value="{{$valor}}" name="Dificultad[{{$Grado->id}}]"></label>
-    				
+    				<label class="form-group">dificultad: <input type="range" value="{{$valor}}" name="Dificultad[{{$Grado->id}}]"></label>    				
     				</div>
 				@endforeach
-           
                 </div>
           </div>	
             <div class="form-group col-4">
@@ -77,7 +75,6 @@
 	      <span class="help-block text-danger" role="alert">
         <strong>{{ $errors->first('Nombre_Reactivo')?"Existe una reactivo con este nombre":"" }}</strong>
     	<strong>{{ $errors->first('Enunciado')?"El enunciado debe ser mayor a 3 letras":"" }}</strong>
-    	
     	</span>
   </div>
 </div>
