@@ -2,7 +2,6 @@
 @section('content')
 <hr>
 <br>
-
 <!-- Crear Reactivos -->
 <div>
 <a href="{{route('Reactivos/AdminReactivos')}}">Administrar Reactivos</a>
@@ -12,5 +11,10 @@
 </div>
 <div>
 	<a href="{{route('Reactivos/AdminOpciones')}}">Administrar Opciones</a>
+</div>
+<div>
+	<b>
+	<a href="{{route('Reactivos/CrearReactivo')}}">Crear Reactivos</a>
+	</b>
 </div>
 @endsection

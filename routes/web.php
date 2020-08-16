@@ -61,4 +61,5 @@ Route::group(['middleware' =>"auth", 'prefix' => 'Reactivos', 'as' => 'Reactivos
     Route::post('EditarOpcionesPost/{id}', "$path@EditarOpcionesPost")->name("/EditarOpcionesPost");    
     Route::post('/AddReactivo', "$path@AddReactivo")->name("/AddReactivo");
     Route::post('/EliminarReactivo/{id}',"$path@EliminarReactivo")->name('/EliminarReactivo');
+    Route::get('/CrearReactivo',"$path@CrearReactivo")->name('/CrearReactivo');
 });

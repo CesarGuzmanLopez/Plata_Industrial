@@ -207,8 +207,7 @@ class ReactivosController extends Controller
             $Opcion->save();
            return redirect()->route('Reactivos/AdminOpciones');
     }
-    function sanitize_output($buffer) {
-        
+    private function sanitize_output($buffer) {
         $search = array(
             '/\>[^\S ]+/s',     // strip whitespaces after tags, except space
             '/[^\S ]+\</s',     // strip whitespaces before tags, except space
@@ -224,7 +223,12 @@ class ReactivosController extends Controller
         $buffer =str_replace("\n",'', preg_replace($search, $replace, $buffer));
         return $buffer;
     }
-    
+    /**
+     * Crear funciones para dar de alta archivos
+     */
+    public function  CrearReactivo(){
+        
+    }
 
 }
 
