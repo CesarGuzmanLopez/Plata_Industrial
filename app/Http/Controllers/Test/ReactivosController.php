@@ -12,6 +12,8 @@ use App\Models\TgTema;
 use App\Models\ReactivosGruposTipo;
 use App\Models\ReactivosPopularidad;
 use App\Models\ReactivosRetroalimentacion;
+use App\Models\ReactivosOpcione;
+use App\Models\ReactivosReactivosOpcione;
 class ReactivosController extends Controller
 {
     public function __construct()
@@ -37,7 +39,6 @@ class ReactivosController extends Controller
         return view("Test.AdminReactivos")->with($data);
     }
     public function editReactivo(Request $request,$id){
-      
         $reactivo = ReactivosReactivo::get()->where('id','=',$id)->first();
         if($reactivo->Nombre != $request->Nombre_Reactivo)
             $this->validate($request, [ 'Nombre_Reactivo'   => 'required|string|min:3|max:35|unique:reactivos__reactivos,Nombre',
@@ -45,7 +46,7 @@ class ReactivosController extends Controller
             ]);
           if(! $request->Enunciado)return back();
         $reactivo->Nombre = $request->Nombre_Reactivo;
-        $reactivo->Enunciado = $request->Enunciado;
+        $reactivo->Enunciado =$this->sanitize_output( $request->Enunciado);
         $reactivo->ID_Tema = $request->Tema;
         $reactivo->ID_Creador = $request->user()->id;
         $reactivo->Datos =json_encode($request->Data);
@@ -54,6 +55,7 @@ class ReactivosController extends Controller
         foreach(  $reactivo->reactivos__popularidads as $Pop){
             ReactivosPopularidad::where('ID_Reactivo','=',$id)->where('ID_Grado', "=",$Pop->ID_Grado)->delete();
         }
+        
         if($request->Grado)
             foreach($request->Grado as $G){
                 $relacion = new ReactivosPopularidad();
@@ -62,9 +64,25 @@ class ReactivosController extends Controller
                 $relacion->Dificultad_Creador =$request->Dificultad["$relacion->ID_Grado"];
                 $relacion->save();
         }
+        foreach(  
+            $reactivo->reactivos__reactivos_opciones as  $Pop){
+            ReactivosReactivosOpcione:: where('ID_Reactivo','=',$id)->where('ID_Opcion', "=",$Pop->ID_Opcion)->delete();
+        }
+     
+        if($request->Opcion)
+            foreach($request->Opcion as $G){
+                $relacion = new ReactivosReactivosOpcione();
+                $relacion->ID_Opcion=$G;
+                $relacion->ID_Reactivo=  $reactivo->id;
+                $relacion->valor =$request->ValorEnPregunta["$relacion->ID_Opcion"];
+                $relacion->save();
+        }
+        
+        
         
         return  redirect()->route('Reactivos/AdminReactivos');
     }
+
     public function AddReactivo (Request $request){
             $this->validate($request, [
                 'Nombre_Reactivo'   => 'required|string|min:3|max:35|unique:reactivos__reactivos,Nombre',
@@ -72,7 +90,7 @@ class ReactivosController extends Controller
             ]);
             $Reactivo = new ReactivosReactivo();
             $Reactivo->Nombre = $request->Nombre_Reactivo;
-            $Reactivo->Enunciado = $request->Enunciado;
+            $Reactivo->Enunciado =$this->sanitize_output( $request->Enunciado);
             $Reactivo->ID_Tema = $request->Tema;
             $Reactivo->ID_Creador = $request->user()->id;
             $Reactivo->Datos =json_encode($request->Data);
@@ -101,6 +119,7 @@ class ReactivosController extends Controller
              'Cursos'=>TgCurso::get(),
              'Grados'=>TgGradosAcademico::get(),
              'Grupo_Tipos'=>ReactivosGruposTipo::get(),
+              'Opciones'=>ReactivosOpcione::get(),
          ];  
         return view('Test.editarReactivo')->with($data);
     }
@@ -121,7 +140,7 @@ class ReactivosController extends Controller
         $retro = new ReactivosRetroalimentacion();
         $retro->ID_Grado =$request->Grado;
         $retro->ID_Reactivo =$request->Reactivo;
-        $retro->Retroalimentacion =json_encode($request->Retroalimentacion);
+        $retro->Retroalimentacion =$this->sanitize_output($request->Retroalimentacion);
         $retro->Datos=json_encode($request->Data);
         $retro->save();
         return back();
@@ -143,15 +162,69 @@ class ReactivosController extends Controller
             $retro = ReactivosRetroalimentacion::where('id','=',$id)->first();
             $retro->ID_Grado =$request->Grado;
             $retro->ID_Reactivo =$request->Reactivo;
-            $retro->Retroalimentacion =json_encode($request->Retroalimentacion);
+            $retro->Retroalimentacion =$this->sanitize_output($request->Retroalimentacion);
             $retro->Datos=json_encode($request->Data);
             $retro->save();
             return redirect()->route('Reactivos/AdminRetroalmientacion');
+    } 
+    public function AdminOpciones(){
+        $data=[
+            'Opciones'=>ReactivosOpcione::get(),
+        ];
+        return view('Test.AdminOpciones')->with($data);      
+    }
+    public function AddOpciones(Request $request){
+        $this->validate($request, [
+            'Opcion1'=> 'bail|required',
+        ]);
+        $Opcion =  new ReactivosOpcione();
+        $Opcion->Enunciado1 =$request->Opcion1;
+        $Opcion->Enunciado2 =$request->Opcion2;
+        $Opcion->Datos1 =$request->Datos1;
+        $Opcion->Datos2 =$request->Datos2;
+        $Opcion->save();
+        return back();
+    }
+    public function EliminarOpciones($id){
+        ReactivosOpcione::where('id','=',$id)->first()->delete();
+        return back();
+    }
+    public function EditarOpciones($id){
+        $data=[
+            'Opcion'=>ReactivosOpcione::where('id','=',$id)->first(),
+        ];
+        return view('Test.EditarOpciones')->with($data);
+    }
+    public function EditarOpcionesPost(Request $request, $id){
+            $this->validate($request, [
+                'Opcion1'=> 'bail|required',
+            ]);
+            $Opcion=ReactivosOpcione::where('id','=',$id)->first();
+            $Opcion->Enunciado1 =$this->sanitize_output($request->Opcion1);
+            $Opcion->Enunciado2 =$this->sanitize_output($request->Opcion2);
+            $Opcion->Datos1 =$request->Datos1;
+            $Opcion->Datos2 =$request->Datos2;
+            $Opcion->save();
+           return redirect()->route('Reactivos/AdminOpciones');
+    }
+    function sanitize_output($buffer) {
+        
+        $search = array(
+            '/\>[^\S ]+/s',     // strip whitespaces after tags, except space
+            '/[^\S ]+\</s',     // strip whitespaces before tags, except space
+            '/(\s)+/s',         // shorten multiple whitespace sequences
+            '/<!--(.|\s)*?-->/' // Remove HTML comments
+        );
+        $replace = array(
+            '>',
+            '<',
+            '\\1',
+            ''
+        );
+        $buffer =str_replace("\n",'', preg_replace($search, $replace, $buffer));
+        return $buffer;
     }
     
-    
-    
-    
-    
+
 }
 

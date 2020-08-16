@@ -50,9 +50,9 @@ class ChatConversacione extends Model
 
     public function chat__notificaciones()
     {
-        return $this->hasMany(ChatNotificacione::class, 'ID_Conversacion');
+        return $this->hasMany(ChatNotificacion::class, 'ID_Conversacion');
     }
-
+    
     public function chat__participantes()
     {
         return $this->hasMany(ChatParticipante::class, 'ID_Conversacion');

@@ -2,13 +2,14 @@ if($("#AdminReactivos").length!=0) app = new Vue({
     el: '#AdminReactivos',
 data() {
       	 return {
-			
+		
 		}
     },
    components: {
      'editor': Editor,
-
    },
+ created: function () {
+  },
 	methods:{
 		XMLHttpRequest(){
 			return new XMLHttpRequest();

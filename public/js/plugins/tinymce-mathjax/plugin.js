@@ -13,11 +13,11 @@ tinymce.PluginManager.add('mathjax', function(editor, url) {
 
   // load mathjax and its config on editor init
   editor.on('init', function () {
-    for (let i = 0; i < mathjaxScripts.length; i++) {
-      let id = editor.dom.uniqueId();
-      let script = editor.dom.create('script', {id: id, type: 'text/javascript', src: mathjaxScripts[i]});
-      editor.getDoc().getElementsByTagName('head')[0].appendChild(script);
-    }
+//    for (let i = 0; i < mathjaxScripts.length; i++) {
+//      let id = editor.dom.uniqueId();
+/*      let script = editor.dom.create('script', {id: id, type: 'text/javascript', src: mathjaxScripts[i]});
+      editor.getDoc().getElementsByTagName('head')[0].appendChild(script);*/
+  //  }
   });
 
   // remove extra tags on get content
@@ -109,7 +109,7 @@ tinymce.PluginManager.add('mathjax', function(editor, url) {
 
     // show new window
     editor.windowManager.open({
-      title: 'Mathjax',
+      title: 'Formulas Latex',
       width: 600,
       height: 300,
       body: {

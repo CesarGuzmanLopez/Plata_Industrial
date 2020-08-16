@@ -32,18 +32,13 @@ Route::group(['middleware' =>"auth", 'prefix' => 'Temas', 'as' => 'Temas'], func
     Route::get('/EditCursos/{id}', "$path@EditCursos")->name("/EditCursos");
     Route::post('/EditCursos/{id}', "$path@EditCursosP")->name("/EditCursosP");
 });
-
 Route::group(['middleware' =>"auth", 'prefix' => 'CrearCurso', 'as' => 'CrearCurso'], function (){
     $path  ="Cursos";
-    
     Route::post('/AddTemasACurso/{id}', "$path@TemasToCurso")->name("/AddTemasACursoPOST");
-    
     Route::get('/AddTemasACurso/{id}', "$path@AddTemasACursoid")->name("/AddTemasACursoid");
-    
     Route::get('/GetTemas', "$path@GetTemas")->name("GetTemas");
     Route::put('/AddTemaS', "$path@AddTemaS")->name("AddTemaS");
     Route::post('/addCurso', "$path@addCurso")->name("/addCurso");
-    
     Route::get  ('/', "$path@index")->name("/");
 });
 
@@ -56,12 +51,14 @@ Route::group(['middleware' =>"auth", 'prefix' => 'Reactivos', 'as' => 'Reactivos
     Route::post('/editarReactivo/{id}', "$path@editReactivo")->name("/editarReactivopost");
     Route::get('/AdminRetroalmientacion',"$path@AdminRetroalmientacion")->name("/AdminRetroalmientacion");
     Route::post('/AgregaRetroalimentacion',"$path@AgregaRetroalimentacion")->name("/AgregaRetroalimentacion");
-    
     Route::post('/EliminarRetroalimentacion/{id}',"$path@EliminarRetroalimentacion")->name('/EliminarRetroalimentacion');
     Route::get('/editarRetro/{id}',"$path@editarRetro")->name('/editarRetro');
     Route::post('/editarRetro/{id}',"$path@editarRetroPost")->name('/editarRetroPost');
-    
+    Route::get('/AdminOpciones', "$path@AdminOpciones")->name("/AdminOpciones");
+    Route::post('/AddOpciones', "$path@AddOpciones")->name("/AddOpciones");
+    Route::post('/EliminarOpciones/{id}', "$path@EliminarOpciones")->name("/EliminarOpciones");
+    Route::get('/EditarOpciones/{id}', "$path@EditarOpciones")->name("/EditarOpciones");
+    Route::post('EditarOpcionesPost/{id}', "$path@EditarOpcionesPost")->name("/EditarOpcionesPost");    
     Route::post('/AddReactivo', "$path@AddReactivo")->name("/AddReactivo");
     Route::post('/EliminarReactivo/{id}',"$path@EliminarReactivo")->name('/EliminarReactivo');
-    
 });

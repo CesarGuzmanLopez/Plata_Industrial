@@ -1,7 +1,7 @@
 @extends('layouts.test')
 @section('content')
 <div  id ="AdminReactivos" class="container-fluid">
-	<div class="col-12 col-md-10">
+	<div class="col-12 col-md-12">
 	 <form class="form-horizontal" method="post" action="{{route('Reactivos/editarReactivopost',$Reactivo->id)}}">
         <fieldset>
    		 <legend class="text-center header">Editar reactivo</legend>
@@ -18,7 +18,7 @@
             </div>
         </div>	
         <div class="row">
-        <div class="form-group col-4">
+        <div class="form-group col-6 col-md-3">
             	<label class="label" for="Tema">Tema</label>
                 <div class="col-md-12">
                       <select class="form-control" id="Tema" name="Tema"  >
@@ -29,10 +29,10 @@
                       </select>
                 </div>
           </div>	
-           <div class="form-group col-4">
+           <div class="form-group col-6 col-md-3">
             	<label class="label" for="Grado">Grado</label>
                 <div class="col-md-12">
-    						@foreach($Grados as $Grado)
+    			@foreach($Grados as $Grado)
     							@php
     								$selected ="";
     								$valor=0;
@@ -51,7 +51,7 @@
 				@endforeach
                 </div>
           </div>	
-            <div class="form-group col-4">
+            <div class="form-group col-6 col-md-3">
             	<label class="label" for="Grupo_Tipo">Tipo de pregunta</label>
                 <div class="col-md-12">
                       <select class="form-control" id="Grupo_Tipo" name="Grupo_Tipo"   value="{{old('Grupo_Tipo')??''}}" >
@@ -61,6 +61,32 @@
                       </select>
                 </div>
           </div>	
+          
+           <div class="form-group col-6 col-md-5">
+            	<label class="label" for="Opcion">Opciones</label>
+                <div class="col-md-12">
+    			@foreach($Opciones as $opcion)
+    							@php
+    								$selected ="";
+    								$valor=0;
+    							@endphp
+    							@foreach(  $Reactivo->reactivos__reactivos_opciones as $Pop)
+    								@if($Pop->ID_Opcion ==$opcion->id)
+        								@php
+        								$valor =$Pop->valor;
+        								$selected ="checked";break;
+        								@endphp
+    								 @endif
+    							@endforeach
+    				<div class="border"><b><label class="form-group"><input type="checkbox" value="{{$opcion->id}}"  name="Opcion[]"  {{$selected }}><div   style=" width: 300px;  height: 100px;  overflow: visible;" class="overflow-auto border border-danger">{!!$opcion->Enunciado1!!}</div></label></b>
+    				<label class="form-group">Valor de respuesta: <input type="range" value="{{$valor}}" name="ValorEnPregunta[{{$opcion->id}}]"></label>    				
+    				</div>
+				@endforeach
+                </div>
+          </div>	
+          
+          
+          
         </div>
         <div class="form-group">
         	<label class="label">Datos </label>

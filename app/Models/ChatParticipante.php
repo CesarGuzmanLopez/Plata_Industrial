@@ -52,9 +52,9 @@ class ChatParticipante extends Model
     {
         return $this->belongsTo(User::class, 'ID_Participante');
     }
-
+    
     public function chat__notificaciones()
     {
-        return $this->hasMany(ChatNotificacione::class, 'ID_Participante');
+        return $this->hasMany(ChatNotificacion::class, 'ID_Participante');
     }
 }

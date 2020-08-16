@@ -2,12 +2,12 @@
 
 namespace App\Providers;
 
-use HTMLMin\HTMLMin\Compilers\MinifyCompiler;
+
 use Illuminate\View\Engines\CompilerEngine;
 
 
 use Illuminate\View\ViewServiceProvider; 
-
+use HTMLMin\HTMLMin\Compilers\MinifyCompiler;
 
 class MinifiedViewServiceProvider extends ViewServiceProvider
 {

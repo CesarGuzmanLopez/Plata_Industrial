@@ -48,6 +48,6 @@ class ChatMensaje extends Model
 
     public function chat__notificaciones()
     {
-        return $this->hasMany(ChatNotificacione::class, 'ID_Mensaje');
+        return $this->hasMany(ChatNotificacion::class, 'ID_Mensaje');
     }
 }

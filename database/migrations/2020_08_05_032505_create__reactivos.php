@@ -54,11 +54,10 @@ class CreateReactivos extends Migration
         });
         Schema::create('reactivos__opciones', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("ID_");
-            $table->string("Enunciado1");
-            $table->longText("Datos1")->nullable();
-            $table->string("Enunciado2");
-            $table->longText("Datos2")->nullable();
+            $table->longText("Enunciado1");
+            $table->json("Datos1")->nullable();
+            $table->longText("Enunciado2")->nullable();
+            $table->json("Datos2")->nullable();
         });
         Schema::create('reactivos__reactivos_opciones', function (Blueprint $table) {
             $table->unsignedBigInteger("ID_Reactivo");
@@ -93,7 +92,7 @@ class CreateReactivos extends Migration
             $table->unsignedBigInteger("ID_Grado") ;
             $table->foreign("ID_Reactivo")->on("reactivos__reactivos")->references("id")->cascadeOnUpdate();
             $table->foreign("ID_Grado")->on("tg__grados_academicos")->references("id")->cascadeOnUpdate();
-            $table->json("Retroalimentacion")->nullable();
+            $table->longText("Retroalimentacion")->nullable();
             $table->json("Datos")->nullable();
         });
         Schema::create('reactivos__popularidad', function (Blueprint $table) {

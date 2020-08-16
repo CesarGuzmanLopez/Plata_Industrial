@@ -1,52 +1,39 @@
 {
-  "_from": "@dimakorotkov/tinymce-mathjax@^1.0.4",
-  "_id": "@dimakorotkov/tinymce-mathjax@1.0.4",
-  "_inBundle": false,
-  "_integrity": "sha512-ZjTVQhMkVvV31Dl+L1qD1aau4Xra4HCy6jGCvTbCRShjUFJTbs+qBLtQEB8I08Jb71um5nrWmiswRiFmkpLVXQ==",
-  "_location": "/@dimakorotkov/tinymce-mathjax",
-  "_phantomChildren": {},
+
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "@dimakorotkov/tinymce-mathjax@^1.0.4",
-    "name": "@dimakorotkov/tinymce-mathjax",
-    "escapedName": "@dimakorotkov%2ftinymce-mathjax",
-    "scope": "@dimakorotkov",
-    "rawSpec": "^1.0.4",
+
+    "rawSpec": "^0.1",
     "saveSpec": null,
-    "fetchSpec": "^1.0.4"
+    "fetchSpec": "^0.1"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@dimakorotkov/tinymce-mathjax/-/tinymce-mathjax-1.0.4.tgz",
-  "_shasum": "f83b5f4d149cb85b20bd3ae850778d375b704b3d",
-  "_spec": "@dimakorotkov/tinymce-mathjax@^1.0.4",
+
   "_where": "C:\\xampp\\htdocs\\Plata_industrial",
-  "author": {
-    "name": "Dmitriy Korotkov"
-  },
+
   "bugs": {
-    "url": "https://github.com/dimakorotkov/tinymce-mathjax/issues"
+
   },
   "bundleDependencies": false,
   "deprecated": false,
-  "description": "Plugin using MathJax library for rendering math font",
-  "homepage": "https://github.com/dimakorotkov/tinymce-mathjax#readme",
+  "description": "",
   "keywords": [
     "tinymce",
     "mathjax"
   ],
   "license": "MIT",
   "main": "plugin.js",
-  "name": "@dimakorotkov/tinymce-mathjax",
+  "name": "h",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dimakorotkov/tinymce-mathjax.git"
+    "url": " "
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": " "
   },
   "version": "1.0.4"
 }

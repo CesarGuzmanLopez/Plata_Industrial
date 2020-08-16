@@ -3,6 +3,7 @@ import $ from 'jquery';
 import BootstrapVue from 'bootstrap-vue' 
 import Editor from '@tinymce/tinymce-vue';
 import 'mathjax/es5/tex-chtml-full';
+
 require('./bootstrap');
 window.Vue = require('vue');
 Vue.use(Editor);
