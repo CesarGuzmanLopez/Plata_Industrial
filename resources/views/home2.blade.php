@@ -331,7 +331,7 @@
         <div class="row">
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
             <div class="member">
-              <img src="assets/img/team/gabriel.jpeg" alt="">
+              <img src="assets/img/team/Gabriel.jpg" alt="">
               <h4>M. C. Gabriel Guzmán</h4>
               <span>Data scientist</span>
               <p>
