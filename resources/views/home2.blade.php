@@ -1,29 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title></title>
-  <meta content="" name="descriptison">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-
-
-  <!-- Vendor CSS Files -->
-  
-  <link href="/css/app.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-
-
-</head>
-
-<body>
-
+@extends('layouts.test')
+@section('content')
+@section('header')
   <!-- ======= Top Bar ======= -->
   <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top ">
     <div class="container d-flex">
@@ -45,13 +22,13 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="index.html">PLATA</a></h1>
+      <h1 class="logo mr-auto"><a href="{{route('/')}}">PLATA</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
+          <li class="active"><a href="#">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#pricing">Pricing</a></li>
@@ -81,6 +58,8 @@
     </div>
   </header><!-- End Header -->
 
+@endsection
+<div class="prin">
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
@@ -352,12 +331,12 @@
         <div class="row">
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
             <div class="member">
-              <img src="assets/img/team/team-1.jpg" alt="">
-              <h4>Walter White</h4>
-              <span>Chief Executive Officer</span>
+              <img src="assets/img/team/gabriel.jpeg" alt="">
+              <h4>M. C. Gabriel Guzmán</h4>
+              <span>Data scientist</span>
               <p>
-                Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
-              </p>
+Frases muy pedantes que describan a dios en la tierra         
+     </p>
               <div class="social">
                 <a href=""><i class="fa fa-twitter"></i></a>
                 <a href=""><i class="fa fa-facebook"></i></a>
@@ -369,11 +348,11 @@
 
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
             <div class="member">
-              <img src="assets/img/team/team-2.jpg" alt="">
-              <h4>Sarah Jhinson</h4>
-              <span>Product Manager</span>
+              <img src="assets/img/team/Cesar.jpg" alt="">
+              <h4>César Guzmán</h4>
+              <span>Programador</span>
               <p>
-                Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
+Frases muy pedantes que describan a dios en la tierra         
               </p>
               <div class="social">
                 <a href=""><i class="fa fa-twitter"></i></a>
@@ -505,7 +484,7 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
+@section('footer')
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -559,27 +538,9 @@
             </form>
 
           </div>
-
         </div>
       </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>PLATA</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-
-     </div>
-    </div>
-  </footer><!-- End Footer -->
-
-  <div id="preloader"></div>
-  
-  <script src="/js/app.js"></script>
+</div>
 
 
-
-</body>
-
-</html>
+@endsection

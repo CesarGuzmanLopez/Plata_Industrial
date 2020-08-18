@@ -14,7 +14,7 @@ Auth::routes();
 Route::get('/index', "HomeController@index")->name("/index");
 Route::get('/',  function () {
     return view('home2');
-});
+})->name("/");
 
 Route::group(['middleware' =>"auth", 'prefix' => 'Temas', 'as' => 'Temas'], function (){
     $path="Test\TemasController";
