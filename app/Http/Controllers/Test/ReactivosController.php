@@ -16,6 +16,7 @@ use App\Models\ReactivosRetroalimentacion;
 use App\Models\ReactivosOpcione;
 use App\Models\ReactivosReactivosOpcione;
 use App\Models\TgGradoCursosDifuso;
+use function GuzzleHttp\json_decode;
 class ReactivosController extends Controller
 {
     public function __construct()
@@ -158,7 +159,7 @@ class ReactivosController extends Controller
             'Grados'=>TgGradosAcademico::get(),
         ];
         return view('Test.editarRetro')->with($data);
-        return back();
+
     }
     public function editarRetroPost(Request $request,$id){
             $retro = ReactivosRetroalimentacion::where('id','=',$id)->first();
@@ -171,8 +172,12 @@ class ReactivosController extends Controller
     } 
     public function AdminOpciones(){
         $data=[
+            'Grupo_Tipos'=>ReactivosGruposTipo::get(),
             'Opciones'=>ReactivosOpcione::get(),
         ];
+        
+        
+        
         return view('Test.AdminOpciones')->with($data);      
     }
     public function AddOpciones(Request $request){
@@ -182,8 +187,9 @@ class ReactivosController extends Controller
         $Opcion =  new ReactivosOpcione();
         $Opcion->Enunciado1 =$request->Opcion1;
         $Opcion->Enunciado2 =$request->Opcion2;
-        $Opcion->Datos1 =$request->Datos1;
-        $Opcion->Datos2 =$request->Datos2;
+        $Opcion->Datos1 =json_encode($request->Datos1);
+        $Opcion->Datos2 =json_encode($request->Datos2);
+        $Opcion->ID_Tipo_Pregunta = $request->Grupo_Tipo;
         $Opcion->save();
         return back();
     }
@@ -192,7 +198,9 @@ class ReactivosController extends Controller
         return back();
     }
     public function EditarOpciones($id){
-        $data=[
+        $data=[      
+            'Grupo_Tipos'=>ReactivosGruposTipo::get(),
+            
             'Opcion'=>ReactivosOpcione::where('id','=',$id)->first(),
         ];
         return view('Test.EditarOpciones')->with($data);
@@ -206,6 +214,7 @@ class ReactivosController extends Controller
             $Opcion->Enunciado2 =$this->sanitize_output($request->Opcion2);
             $Opcion->Datos1 =$request->Datos1;
             $Opcion->Datos2 =$request->Datos2;
+            $Opcion->ID_Tipo_Pregunta = $request->Grupo_Tipo;
             $Opcion->save();
            return redirect()->route('Reactivos/AdminOpciones');
     }

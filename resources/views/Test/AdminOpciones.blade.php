@@ -7,6 +7,7 @@
  			<th> id</th>
  			<th>Opcion 1</th>
  			<th>Opcion 2</th>
+ 			<th>tipo respuesta</th>
  			<th>Editar</th>
  			<th>Eliminar</th>
  		</tr>
@@ -18,6 +19,9 @@
 			
 		<td><textarea rows="5" cols="30" readonly >{{$opcion->Enunciado1}}</textarea></td>
 		<td><textarea rows="5" cols="30" readonly >{{$opcion->Enunciado2}}</textarea></td>
+		<td>
+					<b>{{$opcion->reactivos_grupos_tipo["Nombre"]}}</b>
+				</td>
 		<td><a href="{{route('Reactivos/EditarOpciones',$opcion->id)}}" class="btn btn-primary">Editar</a> </td>
 		<td><form  method="post" action="{{route('Reactivos/EliminarOpciones',$opcion->id)}}"><button class="btn btn-danger">Eliminar</button>@csrf</form></td>
 		</tr>
@@ -28,7 +32,7 @@
   <div class="col-12 col-md-12">
 	 <form class="form-horizontal" method="post" action="{{route('Reactivos/AddOpciones')}}">
 	 <fieldset>
-	 	<legend class="text-center header">Nueva respuesta</legend>
+	 	<legend class="text-center header">Nueva opcion</legend>
          <div class="form-group">
         	<label class="label" for='Opcion1'>Opcion 1</label>
             <div class="col-md-12">
@@ -64,9 +68,21 @@
                 <textarea id="Datos2" name="Datos2" type="text" placeholder="Datos y metadatos necesarios para el reactivo (Avanzado)" class="form-control"></textarea>
             </div>
         </div> 
+        
     </div>
   </div>
   </div>
+              <div class="form-group col-4">
+            	<label class="label" for="Grupo_Tipo">Tipo de pregunta</label>
+                <div class="col-md-12">
+                      <select class="form-control" id="Grupo_Tipo" name="Grupo_Tipo"   value="{{old('Grupo_Tipo')??''}}" >
+    						@foreach($Grupo_Tipos as $Tipo)
+    							<option value="{{$Tipo->id}}">{{$Tipo->Nombre}}</option>
+    						@endforeach
+                      </select>
+                </div>
+          </div>	
+  
          <hr>
          <button class="btn btn-primary">Agregar</button>
 	 </fieldset>

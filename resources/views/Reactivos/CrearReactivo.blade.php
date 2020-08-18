@@ -32,9 +32,6 @@
     </select>
 </div>
 </div>
-
-
-
    <div class="form-group">
     Reactivo
     @include('vue_code.addtextarea_vue',['name'=>"Reactivo"])	
@@ -42,7 +39,6 @@
   	<div class="form-group ">
     opciones
         @foreach($Opciones as $opcion)
-    
     <div class="row border">
       <div class="col-8 border ">
        <b> </b>  
@@ -51,8 +47,8 @@
    <div class="col-4 border p-2">
    		valor <input type="range"  name="valorLista[4]" value="0">
    </div>
-    </div>	
-   
+    </div>
+    
    @endforeach 
     <div class="row border">
       <div class="col-8">

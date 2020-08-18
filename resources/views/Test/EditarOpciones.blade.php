@@ -30,6 +30,17 @@
                 <textarea id="Datos2" name="Datos2" type="text" placeholder="Datos y metadatos necesarios para el reactivo (Avanzado)" class="form-control">{!!json_decode($Opcion->Opcion1)!!}</textarea>
             </div>
         </div> 
+                      <div class="form-group col-4">
+            	<label class="label" for="Grupo_Tipo">Tipo de pregunta</label>
+                <div class="col-md-12">
+                      <select class="form-control" id="Grupo_Tipo" name="Grupo_Tipo"   value="{{old('Grupo_Tipo')??''}}" >
+    						@foreach($Grupo_Tipos as $Tipo)
+    							<option value="{{$Tipo->id}}">{{$Tipo->Nombre}}</option>
+    						@endforeach
+                      </select>
+                </div>
+          </div>	
+  
          <hr>
          <button class="btn btn-primary" type="submit">editar</button>
 	 </fieldset>

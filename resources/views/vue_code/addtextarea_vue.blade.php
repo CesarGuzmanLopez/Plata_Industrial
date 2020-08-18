@@ -4,20 +4,22 @@ $id=str_replace(']','_',str_replace('[', '_', $name));
 <noscript>
 <p>Es obligatorio el uso de Java script </p>
 </noscript>
-	<editor name="{{$name}}" id="{{$id}}" value='{!! $value??(old($name)??"")  !!}'   class="border" placeholder="Ingresa {{$name}}" api-key='y384aesqbqgvxfvpzzc4i6h5sujdgwsxf4gf7uajcr2o2tkv' pla :init="{ 
-                 	selector: '#{{$id}}',
+	<editor name="{{$name}}" id="j_{{$id}}" value='{!! $value??(old($name)??"")  !!}'   class="border" placeholder="Ingresa {{$name}}" api-key='y384aesqbqgvxfvpzzc4i6h5sujdgwsxf4gf7uajcr2o2tkv' pla :init="{ 
+                 	selector: '#j_{{$id}}',
                     external_plugins: {
                     		'mathjax': '/js/plugins/tinymce-mathjax/plugin.js',
-          					'tiny_mce_wiris': 'https://www.wiris.net/demo/plugins/tiny_mce/plugin.js' 
+          				'tiny_mce_wiris': 'https://www.wiris.net/demo/plugins/tiny_mce/plugin.js' 
                     },
                     mathjax: {
                        lib: '/js/app.js', 
                     },
-                    menubar: 'edit insert code view format table toc tools wordcount insert ' ,
                   	inline: true,
                   	tabfocus_elements: ':prev,:next',
+   
+                  	menubar: 'edit insert code view format table toc tools wordcount insert ' ,
 				       toolbar: 'forecolor backcolor code charmap visualblocks insert hr tabfocus toc media numlist bullist importcss emoticons preview mathjax  tiny_mce_wiris_formulaEditorChemistry',
                   	plugins: 'table image  code visualblocks codesample advlist directionality  tabfocus media lists imagetools  emoticons autolink  charmap preview template wordcount  mathjax  autoresize hr' ,
+                  	
                   	branding: false,
                		  entity_encoding : 'raw',
                       add_unload_trigger : false,

@@ -17,8 +17,14 @@
 		<a href="{{route('/')}}">Principal</a>
    	</div> 
       	 @yield('content')	 
-    <script src="{{asset('/js/tinymce/tinymce.min.js')}}"></script>
+    <script src="{{asset('/js/jquery.min.js')}}"></script>
+     
+     <script src="{{asset('/js/tinymce/tinymce.min.js')}}"></script>
+             <script src="{{asset('/js/tinymce/themes/silver/theme.min.js')}}"></script>
+   
+   
     <script src="{{asset('js/app.js') }}?ver={{env('APP_Version')}}"></script>
+    
 @yield('scripts')
    </body>
 </html>
