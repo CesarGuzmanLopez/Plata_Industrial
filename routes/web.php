@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/index', "HomeController@index")->name("/index");
-Route::get('/', "HomeController@index2")->name("/");
-
+Route::get('/',  function () {
+    return view('home2');
+});
 
 Route::group(['middleware' =>"auth", 'prefix' => 'Temas', 'as' => 'Temas'], function (){
     $path="Test\TemasController";
