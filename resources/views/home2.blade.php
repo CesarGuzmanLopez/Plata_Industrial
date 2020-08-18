@@ -64,8 +64,8 @@
   <section id="hero" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
       <h1>PLATA <small class="text-white">Education</small></h1>
-      <h2>Tomamos la educacion y evaluacion muy enserio..</h2>
-      <a href="{{route('login')}}" class="btn-get-started scrollto">Inicia sesion</a>
+      <h2>Tomamos la educación y evaluación muy enserio.</h2>
+      <a href="{{route('login')}}" class="btn-get-started scrollto">Inicia sesión</a>
     </div>
   </section><!-- End Hero -->
 
@@ -367,8 +367,8 @@ Frases muy pedantes que describan a dios en la tierra
               <img src="assets/img/team/team-2.jpg" alt="">
               <h4>Sarah Jhinson</h4>
               <span>Product Manager</span>
-              <p>
-                Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
+                   <p>
+Frases muy pedantes que describan a dios en la tierra         
               </p>
               <div class="social">
                 <a href=""><i class="fa fa-twitter"></i></a>
@@ -388,7 +388,7 @@ Frases muy pedantes que describan a dios en la tierra
               <h4>William Anderson</h4>
               <span>CTO</span>
               <p>
-                Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
+Frases muy pedantes que describan a dios en la tierra         
               </p>
               <div class="social">
                 <a href=""><i class="fa fa-twitter"></i></a>
