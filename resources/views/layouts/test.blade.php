@@ -54,10 +54,9 @@
 
 	@show
 
-
-      	 @yield('content')	 
+      	@section('content')	 
       	 
-      	 
+      	 @show
       	 
       	 
       	 

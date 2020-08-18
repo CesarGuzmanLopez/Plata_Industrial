@@ -1,5 +1,4 @@
 @extends('layouts.test')
-@section('content')
 @section('header')
   <!-- ======= Top Bar ======= -->
   <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top ">
@@ -59,6 +58,7 @@
   </header><!-- End Header -->
 
 @endsection
+@section('content')
 <div class="prin">
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
@@ -482,7 +482,7 @@ Frases muy pedantes que describan a dios en la tierra
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
-
+@endsection
   <!-- ======= Footer ======= -->
 @section('footer')
     <div class="footer-top">
@@ -540,7 +540,5 @@ Frases muy pedantes que describan a dios en la tierra
           </div>
         </div>
       </div>
-</div>
-
-
+</div> 
 @endsection
