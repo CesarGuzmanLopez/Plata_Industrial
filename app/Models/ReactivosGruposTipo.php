@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class ReactivosGruposTipo
- *
+ *<autodoc>
  * @property int $id
  * @property string $Nombre
  * @property string $Descripcion
@@ -20,8 +20,9 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property Collection|ReactivosReactivo[] $reactivos__reactivos
  * @property Collection|ReactivosTipo[] $reactivos__tipos
- *
+ * @property Collection|ReactivosOpcione[] $reactivos__Opciones
  * @package App\Models
+ * </autodoc>
  */
 class ReactivosGruposTipo extends Model
 {
@@ -41,5 +42,11 @@ class ReactivosGruposTipo extends Model
     public function reactivos__tipos()
     {
         return $this->hasMany(ReactivosTipo::class, 'ID_Grupo');
+    }
+    
+    
+    public function reactivos__Opciones()
+    {
+        return $this->hasMany(ReactivosOpcione::class, 'ID_Tipo_Pregunta');
     }
 }

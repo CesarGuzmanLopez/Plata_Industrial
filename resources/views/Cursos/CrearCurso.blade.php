@@ -23,8 +23,7 @@
                          <div class="form-group">
                             <div class="col-md-12">
                             <div class="label">Grado</div>
-								<select id="Grado" name="Grado" type="text" placeholder="Descripcion" class="form-control">
-									<option value="-1"></option>
+								<select id="Grado" name="Grado" type="text" placeholder="Descripcion" class="form-control" rerquired>
 									@foreach($Grados as $Grado)
 												<option value ="{{$Grado->id}}">{{$Grado->Nombre}}</option>
 									@endforeach

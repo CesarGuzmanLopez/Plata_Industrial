@@ -1,7 +1,11 @@
-<?php if(isset($value)){ $value=htmlentities ($value,ENT_QUOTES); $value=preg_replace("/[\r\n|\n|\r]+/", "", $value); } ?>
-
-	<editor name="{{$name}}" id="{{$name}}" value='{!! $value??(old($name)??"")  !!}'   class="border" placeholder="Ingresa {{$name}}" api-key='y384aesqbqgvxfvpzzc4i6h5sujdgwsxf4gf7uajcr2o2tkv' pla :init="{ 
-                 	selector: '#{{$name}}',
+<?php if(isset($value)){ $value=htmlentities ($value,ENT_QUOTES); $value=preg_replace("/[\r\n|\n|\r]+/", "", $value); } 
+$id=str_replace(']','_',str_replace('[', '_', $name));
+?>
+<noscript>
+<p>Es obligatorio el uso de Java script </p>
+</noscript>
+	<editor name="{{$name}}" id="{{$id}}" value='{!! $value??(old($name)??"")  !!}'   class="border" placeholder="Ingresa {{$name}}" api-key='y384aesqbqgvxfvpzzc4i6h5sujdgwsxf4gf7uajcr2o2tkv' pla :init="{ 
+                 	selector: '#{{$id}}',
                     external_plugins: {
                     		'mathjax': '/js/plugins/tinymce-mathjax/plugin.js',
           					'tiny_mce_wiris': 'https://www.wiris.net/demo/plugins/tiny_mce/plugin.js' 

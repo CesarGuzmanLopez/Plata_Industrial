@@ -77,7 +77,6 @@ class Cursos extends Controller
                 $TemaDif->save();
             }
         }
-        
         return redirect()->route("Reactivos/");
     }
     

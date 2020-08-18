@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\ReactivosReactivo;
 use App\Models\TgCurso;
+use App\Models\TgCursoTemasDifuso;
 use App\Models\TgGradosAcademico;
 use App\Models\TgTema;
 use App\Models\ReactivosGruposTipo;
@@ -14,6 +15,7 @@ use App\Models\ReactivosPopularidad;
 use App\Models\ReactivosRetroalimentacion;
 use App\Models\ReactivosOpcione;
 use App\Models\ReactivosReactivosOpcione;
+use App\Models\TgGradoCursosDifuso;
 class ReactivosController extends Controller
 {
     public function __construct()
@@ -227,8 +229,22 @@ class ReactivosController extends Controller
      * Crear funciones para dar de alta archivos
      */
     public function  CrearReactivo(){
-        
+        $data =[
+            'Temas'=>TgTema::get(),
+            'Cursos'=>TgCurso::get(),
+            'Grados'=>TgGradosAcademico::get(),
+            'Grupo_Tipos'=>ReactivosGruposTipo::get(),
+            'Opciones'=>ReactivosOpcione::get(),
+        ];  
+        return view('Reactivos/CrearReactivo')->with($data);
     }
-
+    public function getTemasCurso($id){
+        return TgCursoTemasDifuso::where('ID_Curso','=',$id)
+        ->join('tg__temas', 'tg__curso_temas_difusos.ID_Tema', '=', 'tg__temas.id')
+        ->get();
+    }
+    public function getGrado($ID_Curso){
+        return   TgGradoCursosDifuso::where('ID_Curso','=',$ID_Curso)->first();       
+    }
 }
 
