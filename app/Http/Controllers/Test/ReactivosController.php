@@ -17,6 +17,7 @@ use App\Models\ReactivosOpcione;
 use App\Models\ReactivosReactivosOpcione;
 use App\Models\TgGradoCursosDifuso;
 use function GuzzleHttp\json_decode;
+use App\Models\ReactivosListasReactivo;
 class ReactivosController extends Controller
 {
     public function __construct()
@@ -85,8 +86,21 @@ class ReactivosController extends Controller
         
         return  redirect()->route('Reactivos/AdminReactivos');
     }
-
+    public function AddListaReactivo(Request $request){
+        $this->validate($request, [
+            'NombreLista'   => 'required|string|min:3|max:35|unique:reactivos__listas_reactivo,Nombre',
+        ]);
+        $nuevaLista = new ReactivosListasReactivo();
+        $nuevaLista->Nombre=$request->NombreLista;
+        $nuevaLista->ID_Creador= $request->user()->id;;
+        $nuevaLista->save();
+        return back();
+    }
+    public function getReactivos(){
+        return ReactivosReactivo::get();
+    }
     public function AddReactivo (Request $request){
+
             $this->validate($request, [
                 'Nombre_Reactivo'   => 'required|string|min:3|max:35|unique:reactivos__reactivos,Nombre',
                 'Enunciado'=>'required|string'
@@ -99,7 +113,7 @@ class ReactivosController extends Controller
             $Reactivo->Datos =json_encode($request->Data);
             $Reactivo->ID_Grupo_Reactivos = $request->Grupo_Tipo;
             $Reactivo->save();
-            if($Reactivo->Enunciado =="")return back();
+            if($Reactivo->Enunciado =="")"esto paso";
             if($request->Grado)
                 foreach($request->Grado as $G){
                     $relacion = new ReactivosPopularidad();
@@ -218,6 +232,9 @@ class ReactivosController extends Controller
             $Opcion->save();
            return redirect()->route('Reactivos/AdminOpciones');
     }
+    public function Listas(){
+        return view('Test.Listas');
+    }   
     private function sanitize_output($buffer) {
         $search = array(
             '/\>[^\S ]+/s',     // strip whitespaces after tags, except space
@@ -255,5 +272,7 @@ class ReactivosController extends Controller
     public function getGrado($ID_Curso){
         return   TgGradoCursosDifuso::where('ID_Curso','=',$ID_Curso)->first();       
     }
+    
+    
 }
 

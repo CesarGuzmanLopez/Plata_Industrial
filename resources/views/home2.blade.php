@@ -16,7 +16,6 @@
       </div>
     </div>
   </div>
-
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
@@ -346,26 +345,11 @@ Frases muy pedantes que describan a dios en la tierra
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
-            <div class="member">
-              <img src="assets/img/team/Cesar.jpg" alt="">
-              <h4>César Guzmán</h4>
-              <span>Programador</span>
-              <p>
-Frases muy pedantes que describan a dios en la tierra         
-              </p>
-              <div class="social">
-                <a href=""><i class="fa fa-twitter"></i></a>
-                <a href=""><i class="fa fa-facebook"></i></a>
-                <a href=""><i class="fa fa-instagram"></i></a>
-                <a href=""><i class="fa fa-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
+
         <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
             <div class="member">
-              <img src="assets/img/team/team-2.jpg" alt="">
-              <h4>Sarah Jhinson</h4>
+              <img src="assets/img/team/Antonio.png" alt="">
+              <h4>Ph. D. Antonio Reina</h4>
               <span>Product Manager</span>
                    <p>
 Frases muy pedantes que describan a dios en la tierra         
@@ -384,8 +368,8 @@ Frases muy pedantes que describan a dios en la tierra
 
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
             <div class="member">
-              <img src="assets/img/team/team-3.jpg" alt="">
-              <h4>William Anderson</h4>
+              <img src="assets/img/team/Miguel.png" alt="">
+              <h4>Ph. D. Miguel Reina</h4>
               <span>CTO</span>
               <p>
 Frases muy pedantes que describan a dios en la tierra         
@@ -398,7 +382,22 @@ Frases muy pedantes que describan a dios en la tierra
               </div>
             </div>
           </div>
-
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="assets/img/team/Cesar.jpg" alt="">
+              <h4>César Guzmán</h4>
+              <span>Software developer</span>
+              <p>
+Frases muy pedantes que describan a dios en la tierra         
+              </p>
+              <div class="social">
+                <a href=""><i class="fa fa-twitter"></i></a>
+                <a href=""><i class="fa fa-facebook"></i></a>
+                <a href=""><i class="fa fa-instagram"></i></a>
+                <a href=""><i class="fa fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>

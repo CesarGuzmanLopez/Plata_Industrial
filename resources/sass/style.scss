@@ -1,3 +1,12 @@
+html, body {
+  height: 100%;
+}
+.wrapper {
+  min-height: calc(90% - 4rem);
+}
+
+
+
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
@@ -26,6 +35,8 @@
   animation: animate-preloader 1s linear infinite;
 }
 
+
+
 @-webkit-keyframes animate-preloader {
   0% {
     transform: rotate(0deg);
@@ -43,6 +54,61 @@
     transform: rotate(360deg);
   }
 }
+@-moz-document url-prefix() {
+	wrapper {
+  min-height: 90%;
+}
+
+    #preloader {
+  position: relative;
+width: 0px;
+height: 0px;
+display: none;;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+display: none;;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid rgb(192, 192, 192);
+  border-top-color: #efefef;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+}
+
 
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
@@ -144,6 +210,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.5s;
   z-index: 997;
   top: 40px;
+
 }
 
 #header.header-scrolled {

@@ -14,6 +14,11 @@
 	<a href="{{route('Reactivos/AdminOpciones')}}">Administrar Opciones</a>
 </div>
 <div>
+	<a href="{{route('Reactivos/Listas')}}">Listas de Organizacion</a>
+</div>
+
+
+<div>
 	<b>
 	<a href="{{route('Reactivos/CrearReactivo')}}">Crear Reactivos</a>
 	</b>

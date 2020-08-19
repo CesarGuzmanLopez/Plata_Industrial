@@ -67,4 +67,10 @@ Route::group(['middleware' =>"auth", 'prefix' => 'Reactivos', 'as' => 'Reactivos
     Route::get('/CrearReactivo',"$path@CrearReactivo")->name('/CrearReactivo');
     Route::get('/getTemasCurso/{id}',"$path@getTemasCurso")->name('/getTemasCurso');
     Route::get('/getGrado/{id}',"$path@getGrado")->name('/getGrado');
+    
+    Route::get('/Listas',"$path@Listas")->name('/Listas');
+    Route::get('/getReactivos',"$path@getReactivos")->name('/getReactivos');
+    Route::post('/AddListaReactivo',"$path@AddListaReactivo")->name('/AddListaReactivo');
+
+    
 });

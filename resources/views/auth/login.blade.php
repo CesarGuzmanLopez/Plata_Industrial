@@ -1,6 +1,6 @@
-@extends('layouts.app')
-
+@extends('layouts.test')
 @section('content')
+<div class="p-4 h-100" >
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group row">
@@ -48,15 +48,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
                             </div>
                         </div>
                     </form>
 
-
+</div>
 @endsection

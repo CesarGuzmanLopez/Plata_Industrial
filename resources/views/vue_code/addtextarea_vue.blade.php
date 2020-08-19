@@ -4,8 +4,8 @@ $id=str_replace(']','_',str_replace('[', '_', $name));
 <noscript>
 <p>Es obligatorio el uso de Java script </p>
 </noscript>
-	<editor name="{{$name}}" id="j_{{$id}}" value='{!! $value??(old($name)??"")  !!}'   class="border" placeholder="Ingresa {{$name}}" api-key='y384aesqbqgvxfvpzzc4i6h5sujdgwsxf4gf7uajcr2o2tkv' pla :init="{ 
-                 	selector: '#j_{{$id}}',
+	<editor name="{{$name}}" id="{{$id}}" value='{!! $value??(old($name)??"")  !!}'   class="border" placeholder="Ingresa {{$name}}" api-key='y384aesqbqgvxfvpzzc4i6h5sujdgwsxf4gf7uajcr2o2tkv' pla :init="{ 
+                 	selector: '{{$name}}}',
                     external_plugins: {
                     		'mathjax': '/js/plugins/tinymce-mathjax/plugin.js',
           				'tiny_mce_wiris': 'https://www.wiris.net/demo/plugins/tiny_mce/plugin.js' 

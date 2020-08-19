@@ -25,11 +25,13 @@ Vue.use(BootstrapVue);
 import VueAos from 'vue-aos'
 Vue.use(VueAos);
 require( 'isotope-layout');
-require( 'venobox/venobox/venobox.min.js');
-require(  'owl.carousel/dist/assets/owl.carousel.css');
-require(  'owl.carousel');
-require('aos');
+require( 'venobox/venobox/venobox.min.js').default;
+require(  'owl.carousel/dist/assets/owl.carousel.css').default;
+require(  'owl.carousel').default;
+require('aos').default;
 import isotope from  'isotope-layout';
+
+Vue.component('tablamodelo', require('./components/TablaModelo.vue').default);
 $(document).ready(function() {
 require('./Princpal');
 require('./Curso.js');
