@@ -1,12 +1,13 @@
 @extends('layouts.test')
 @section('content')
+
 <h2 class="text-center">Agregar Reactivo de opciones multiple</h2>
 <div id="CrearReactivos"  class="container">
     <form  >
     <div class="row">
    <div class="form-group col-12 col-md-4">
     Grupo
-    <select class="custom-select mr-sm-2" id="" name="ID_Curso"  @change="ChangeCurso($event)">
+    <select class="custom-select mr-sm-2" name="ID_Curso"  @change="ChangeCurso($event)">
             <option value="-1" selected>...</option>
     		@foreach($Cursos as $Curso )
     			<option value="{{$Curso->id}}"> {{$Curso->Nombre}}</option>

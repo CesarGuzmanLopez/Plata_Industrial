@@ -100,9 +100,9 @@
     </div>
   </footer><!-- End Footer -->
       	 
-     <div id="preloader"></div>   	 
-      	 
+     <div id="preloader"></div>
     <script src="{{asset('/js/jquery.min.js')}}"></script>
+    <script src="{{asset('/js/tinymce/tinymce.min.js')}}"></script>
     <script src="{{asset('js/app.js') }}?ver={{env('APP_Version')}}"></script>
   
 @yield('scripts')

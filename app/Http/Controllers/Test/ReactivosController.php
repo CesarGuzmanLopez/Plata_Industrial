@@ -68,8 +68,7 @@ class ReactivosController extends Controller
                 $relacion->Dificultad_Creador =$request->Dificultad["$relacion->ID_Grado"];
                 $relacion->save();
         }
-        foreach(  
-            $reactivo->reactivos__reactivos_opciones as  $Pop){
+        foreach(   $reactivo->reactivos__reactivos_opciones as  $Pop){
             ReactivosReactivosOpcione:: where('ID_Reactivo','=',$id)->where('ID_Opcion', "=",$Pop->ID_Opcion)->delete();
         }
      
@@ -272,7 +271,5 @@ class ReactivosController extends Controller
     public function getGrado($ID_Curso){
         return   TgGradoCursosDifuso::where('ID_Curso','=',$ID_Curso)->first();       
     }
-    
-    
 }
 
